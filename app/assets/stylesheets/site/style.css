@@ -3,10 +3,6 @@
   src: url("../assets/fonts/AmericanTypewriterBQ-Bold.otf") format("opentype");
 }
 
-p {
-  color: #272727;
-}
-
 body {
   font-family: 'Poppins', sans-serif;
   color: #0c0c0c;

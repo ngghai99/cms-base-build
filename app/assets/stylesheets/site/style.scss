@@ -17,10 +17,6 @@ $primary1: #51b5ef;
   font-family: 'American Typewriter', sans-serif;
 }
 
-p {
-  color: #272727;
-}
-
 @mixin hero_btn($col1, $col2, $pad1, $pad2) {
   display: inline-block;
   padding: $pad1 $pad2;
