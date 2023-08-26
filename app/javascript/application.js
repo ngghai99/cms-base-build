@@ -4,3 +4,4 @@ import "controllers"
 import "admin-lte"
 import "bootstrap"
 import "@fortawesome/fontawesome-free"
+import "jquery";
