@@ -8,8 +8,8 @@
     }
 
     .hero_area::before {
-        width: 100%;
-        height: 35%;
+        width: 100% !important;
+        height: 35% !important;
     }
 
     .sub_page .hero_area::before {

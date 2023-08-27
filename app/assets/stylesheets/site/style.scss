@@ -5,7 +5,7 @@ $primary1: #51b5ef;
 
 @font-face {
   font-family: American Typewriter;
-  src: url("../assets/fonts/AmericanTypewriterBQ-Bold.otf") format("opentype");
+  src: asset_url("/assets/AmericanTypewriterBQ-Bold.otf") format("opentype");
 }
 
 @mixin main-font {
@@ -261,7 +261,7 @@ a:focus {
 }
 
 .custom_nav-container .nav_search-btn {
-  background-image: url(../images/search-icon.png);
+  background-image: asset_url('/assets/search-icon.png');
   background-size: 18px;
   background-repeat: no-repeat;
   width: 35px;
@@ -302,7 +302,7 @@ a:focus {
 }
 
 .custom_nav-container .navbar-toggler .navbar-toggler-icon {
-  background-image: url(../images/menu.png);
+  background-image: asset_url('/assets/menu.png');
   background-size: 55px;
 }
 
@@ -452,18 +452,18 @@ a:focus {
   }
 
   .carousel-control-prev {
-    background-image: url(../images/prev-black.png);
+    background-image: asset_url('/assets/prev-black.png');
 
     &:hover {
-      background-image: url(../images/prev-grey.png);
+      background-image: asset_url('/assets/prev-grey.png');
     }
   }
 
   .carousel-control-next {
-    background-image: url(../images/next-black.png);
+    background-image: asset_url('/assets/next-black.png');
 
     &:hover {
-      background-image: url(../images/next-grey.png);
+      background-image: asset_url('/assets/next-grey.png');
     }
   }
 
@@ -654,14 +654,14 @@ a:focus {
   }
 
   .owl-carousel .owl-nav .owl-prev {
-    background-image: url(../images/left-angle.png);
+    background-image: asset_url('/assets/left-angle.png');
     left: -10%;
 
   }
 
   .owl-carousel .owl-nav .owl-next {
     right: -10%;
-    background-image: url(../images/right-angle.png);
+    background-image: asset_url('/assets/right-angle.png');
 
   }
 
@@ -677,7 +677,7 @@ a:focus {
 // app section
 
 .app_section {
-  background-image: url(../images/app-bg.jpg);
+  background-image: asset_url('/assets/app-bg.jpg');
   background-size: 100% 86%;
   background-repeat: no-repeat;
   color: $white;
