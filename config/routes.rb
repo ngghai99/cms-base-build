@@ -1,17 +1,15 @@
 Rails.application.routes.draw do
   devise_scope :user do
-    get "users", to: "devise/sessions#new"
-    get 'admin', to: 'devise/sessions#new'
+    get "users", to: "devise/sessions#new", as: 'user_login'
+    get 'admin', to: 'devise/sessions#new', as: 'admin_login'
+
   end
   devise_for :users
 
-  resources :admin do
-    collection do
-      resources :dashboard
-    end
-  end
-
   namespace :admin do
+    get '', to: 'dashboard#index', as: 'admin_dashboard_root'
+
+    resource :dashboard
     resources :articles
   end
 
