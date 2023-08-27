@@ -1,9 +1,8 @@
-<div class="row">
+<div class="row m-2">
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"></h3>
-
+        <h3 class="card-title"><%= t('articles.article_listing')%></h3>
         <div class="card-tools">
           <div class="input-group input-group-sm" style="width: 150px;">
             <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -15,15 +14,15 @@
             </div>
           </div>
         </div>
-      </div>
+    </div>
       <div class="card-body table-responsive p-0">
         <table class="table table-hover text-nowrap">
           <thead>
             <tr>
-              <th><%= t('.title')%></th>
-              <th><%= t('.status')%></th>
-              <th><%= t('.order')%></th>
-              <th><%= t('.created_at')%></th>
+              <th><%= t('articles.title') %></th>
+              <th><%= t('articles.status') %></th>
+              <th><%= t('articles.order') %></th>
+              <th><%= t('articles.created_at') %></th>
             </tr>
           </thead>
           <tbody>
