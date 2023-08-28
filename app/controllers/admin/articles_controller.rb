@@ -2,7 +2,7 @@ class Admin::ArticlesController < ApplicationController
   before_action :set_admin_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    @admin_articles = Article.all.order(title: :asc)
+    @admin_articles = Article.all.order(title: :asc).decorate
   end
 
   def show
@@ -37,7 +37,7 @@ class Admin::ArticlesController < ApplicationController
   private
 
   def set_admin_article
-    @admin_article = Article.find(params[:id])
+    @admin_article = Article.find(params[:id]).decorate
   end
 
   def admin_article_params
