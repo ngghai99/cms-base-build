@@ -1,4 +1,4 @@
-class ArticleDecorator < BaseDecorator
+class ArticleDecorator < ApplicationDecorator
   def decorate_status
     "<span class=\"badge badge-#{(object.status == "active") ? "success" : "danger"}\">
       #{(object.status == "active") ? t(".active") : t(".disable")}
