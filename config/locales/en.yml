@@ -5,3 +5,5 @@ en:
     status: Status
     order: Order
     created_at: Created At
+    active: Active
+    disable: Disable

@@ -2,31 +2,27 @@ class Admin::ArticlesController < ApplicationController
   before_action :set_admin_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    @admin_articles = Article.all.filter_by(params).order(title: :asc).decorate
+    @admin_articles = Article.all.filter_by(params).order(title: :asc)
   end
 
-  def show
-  end
+  def show;end
 
   def new
-    @admin_article = Article.new
+    @article_form = Article::CreateForm.new
   end
 
   def create
-    @admin_article = Article.new(admin_article_params)
-    if @admin_article.save
-      redirect_to admin_articles_path, notice: I18n.t('Article was successfully created!')
-    else
-      render :new
-    end
+    @article_form = Article::CreateForm.new(admin_create_article_params)
+    handle_form_save('Article was successfully created!')
+  end
+
+  def edit
+    @article_form = Article::UpdateForm.new(@admin_article_attr)
   end
 
   def update
-    if @admin_article.update(admin_article_params)
-      redirect_to admin_articles_path, notice: I18n.t('Article was successfully updated')
-    else
-      render :edit
-    end
+    @article_form = Article::UpdateForm.new(admin_update_article_params)
+    handle_form_save('Article was successfully updated')
   end
 
   def destroy
@@ -37,10 +33,28 @@ class Admin::ArticlesController < ApplicationController
   private
 
   def set_admin_article
-    @admin_article = Article.find(params[:id]).decorate
+    @admin_article = Article.find(params[:id])
+
+    @admin_article_attr = @admin_article.attributes.slice(
+      "title", "content",
+      "image", "status",
+      "description", "article_catalogue_id"
+    ) if @admin_article.present?
   end
 
-  def admin_article_params
-    params.require(:article).permit(:title, :image, :status, :description, :article_catalogue_id)
+  def admin_create_article_params
+    params.require(:article_create_form).permit(:title, :content, :image, :status, :description, :article_catalogue_id)
+  end
+
+  def admin_update_article_params
+    params.require(:article_update_form).permit(:title, :content, :image, :status, :description, :article_catalogue_id)
+  end
+
+  def handle_form_save(success_message)
+    if @article_form.save
+      redirect_to admin_articles_path, notice: I18n.t(success_message)
+    else
+      render :new
+    end
   end
 end

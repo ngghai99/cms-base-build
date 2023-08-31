@@ -11,7 +11,7 @@
           </p>
           <p>
             <strong><%= t('articles.status') %>:</strong>
-            <%= @admin_article.decorate_status %>
+            <%= @admin_article.decorate.decorate_status %>
           </p>
         </div>
         <div class="col-md-6">
@@ -23,7 +23,7 @@
         </div>
         <div class="col-md-12">
           <strong><%= t('articles.content') %>:</strong>
-          <%= simple_format(@admin_article.decorate_content) %>
+          <%= simple_format(@admin_article.content) %>
         </div>
       </div>
 

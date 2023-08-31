@@ -30,7 +30,7 @@
             <tr>
               <td><%= link_to admin_article.title, admin_article_path(admin_article.id) %></td>
               <td><%= admin_article.order %></td>
-              <td><%= admin_article.decorate_status %></td>
+              <td><%= admin_article.decorate.decorate_status %></td>
               <td><%= admin_article.created_at.strftime('%d-%m-%Y') %></td>
               <td class="pull-right">
                 <%= link_to t('button.edit'), edit_admin_article_path(admin_article.id), class: "btn-xs btn btn-warning" %>

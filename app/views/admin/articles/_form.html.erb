@@ -1,11 +1,11 @@
-<%= form_for [:admin, @admin_article], data: { turbo: false } do |f| %>
+<%= form_for [:admin, @article_form], url: @admin_article.present? ? admin_article_path(@admin_article) : admin_articles_path, method: @admin_article.present? ? :put : :post, data: { turbo: false } do |f| %>
   <div class="card card-primary card-tabs box-solid">
     <div class="card-header p-0 pt-1" style="background-color: #6c757d;">
     </div>
     <div class="card-body">
       <div class="tab-content" id="custom-tabs-one-tabContent">
         <div class="tab-pane fade show active" id="tab_1">
-          <%= render partial: 'shared/error_messages', locals: { object: @admin_article } %>
+          <%= render partial: 'shared/error_messages', locals: { object: @article_form } %>
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
