@@ -7,3 +7,5 @@ en:
     created_at: Created At
     active: Active
     disable: Disable
+    save_article_sucessfully: Article was successfully created
+    update_article_sucessfully: Article was successfully updated

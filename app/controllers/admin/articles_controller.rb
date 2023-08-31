@@ -13,7 +13,7 @@ class Admin::ArticlesController < ApplicationController
 
   def create
     @article_form = Article::CreateForm.new(admin_create_article_params)
-    handle_form_save('Article was successfully created!')
+    handle_form_save('articles.save_article_sucessfully')
   end
 
   def edit
@@ -22,7 +22,7 @@ class Admin::ArticlesController < ApplicationController
 
   def update
     @article_form = Article::UpdateForm.new(admin_update_article_params)
-    handle_form_save('Article was successfully updated')
+    handle_form_save('articles.update_article_sucessfully')
   end
 
   def destroy
