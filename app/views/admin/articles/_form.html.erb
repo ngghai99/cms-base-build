@@ -33,10 +33,8 @@
             </div>
             <div class="col-md-12 d-flex">
               <div class="form-group">
-                <%= f.label :image %><br>
-                <img class="img thumb" src="<%= f.object.image.to_s %>">
-                <%= f.hidden_field :image, placeholder: "link image", class: "form-control oneline image half" %>
-                <input type="file" onchange="upload_image(this)" class= "upload-file" accept="image/png, image/gif, image/jpeg, image/svg, image/jpg">
+                <%= f.label I18n.t('.articles.title_background') %><br>
+                <%= f.file_field :images, accept: "image/jpeg, image/gif, image/png, image/jpg", multiple: true %>
               </div>
             </div>
             <div class="col-md-12">

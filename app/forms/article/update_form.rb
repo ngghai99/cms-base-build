@@ -1,6 +1,6 @@
 class Article::UpdateForm
   include ActiveModel::Model
-  attr_accessor :title, :content, :image, :status, :slug, :order, :article_catalogue_id
+  attr_accessor :title, :content, :images, :status, :slug, :order, :article_catalogue_id
 
   validates :title, presence: true
   validates :content, presence: true

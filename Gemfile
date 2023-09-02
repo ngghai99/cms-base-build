@@ -45,6 +45,9 @@ gem "bootsnap", require: false
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'pg'
 gem 'bootstrap'
+gem "carrierwave"
+gem 'mini_magick'
+gem "tinymce-rails"
 #####
 
 # Use Sass to process CSS

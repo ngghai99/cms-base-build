@@ -37,17 +37,17 @@ class Admin::ArticlesController < ApplicationController
 
     @admin_article_attr = @admin_article.attributes.slice(
       "title", "content",
-      "image", "status",
+      "images", "status",
       "description", "article_catalogue_id"
     ) if @admin_article.present?
   end
 
   def admin_create_article_params
-    params.require(:article_create_form).permit(:title, :content, :image, :status, :description, :article_catalogue_id)
+    params.require(:article_create_form).permit(:title, :content, :image, :status, :description, :article_catalogue_id, images: [])
   end
 
   def admin_update_article_params
-    params.require(:article_update_form).permit(:title, :content, :image, :status, :description, :article_catalogue_id)
+    params.require(:article_update_form).permit(:title, :content, :image, :status, :description, :article_catalogue_id, images: [])
   end
 
   def handle_form_save(success_message)
