@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :articles
   end
 
+  resources :articles
+
   namespace :client do
     resources :articles
   end

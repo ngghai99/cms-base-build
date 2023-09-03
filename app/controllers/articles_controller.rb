@@ -1,8 +1,9 @@
 class ArticlesController < ApplicationController
+  layout 'article_layout'
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    @articles = Article.all.order(id: :desc)
+    @admin_articles = Article.all.filter_by(params).order(title: :asc)
   end
 
   def show

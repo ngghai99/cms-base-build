@@ -3,4 +3,5 @@
 //= link_tree ../../javascript .js
 //= link_tree ../../../vendor/javascript .js
 //= link site/style.css
+//= link article/style.css
 //= link site/responsive.css
