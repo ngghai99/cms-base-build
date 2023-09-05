@@ -4,4 +4,5 @@ import "controllers"
 import "admin-lte"
 import "bootstrap"
 import "@fortawesome/fontawesome-free"
-import "jquery";
+import jquery from 'jquery'
+window.$ = jquery
