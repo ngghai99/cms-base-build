@@ -31,12 +31,21 @@
                 <%= f.select :status, [[t('status.active'), 'active'], [t('status.disable'), 'disable']], {}, { class: "form-control" }   %>
               </div>
             </div>
-            <div class="col-md-12 d-flex">
-              <div class="form-group">
-                <%= f.label I18n.t('.articles.title_background') %><br>
-                <%= f.file_field :images, accept: "image/jpeg, image/gif, image/png, image/jpg", multiple: true %>
+
+
+
+            <div class="mb-3" data-controller="image" id="Img">
+              <%= f.label :images, class: "form-label"  %>
+              <%= f.file_field :images, multiple: true, class: "form-control", accept: "image/png, image/jpeg, image/jpg", "data-image-target": "input" %>
+              <div id="image-preview-container" style=" width: 150px;height: 200px;">
+                <!-- Hiển thị tấm hình ở đây -->
               </div>
             </div>
+
+
+
+
+
             <div class="col-md-12">
               <div class="form-group">
                 <%= f.label :content %><br>
@@ -54,11 +63,105 @@
     </div>
   </div>
 <% end %>
+<style>
+  .custome-image {
+  max-width: 100%;
+  max-height: 200px; /* Điều chỉnh kích thước tùy ý */
+}
 
+</style>
 <script>
   tinymce.remove();
   tinymce.init({
     selector: '.tinymce',
     plugins: 'lists link image table code help wordcount'
   });
+</script>
+<%# <script>
+// imgInp.onchange = evt => {
+//   const [file] = imgInp.files;
+//   if (file) {
+//     document.getElementById("image-preview").src = URL.createObjectURL(file);
+//   }
+// };
+
+imgInp.onchange = evt => {
+  const imagePreview = document.getElementById("image-preview");
+  imagePreview.innerHTML = ""; // Xóa hình ảnh trước (nếu có)
+
+  const files = imgInp.files;
+  for (const file of files) {
+    if (file) {
+      const img = document.createElement("img");
+      img.src = URL.createObjectURL(file);
+      img.classList.add("custome-image");
+
+      imagePreview.appendChild(img);
+    }
+  }
+};
+
+
+</script> %>
+<%# <script>
+  document.addEventListener('DOMContentLoaded', function () {
+  const imageInputs = document.querySelectorAll('[data-image-target]');
+
+  imageInputs.forEach(function (input) {
+    input.addEventListener('change', function (event) {
+      if (input.files && input.files[0]) {
+        console.log(input)
+        console.log(input.files)
+        console.log(input.files[0])
+
+
+        const reader = new FileReader();
+        reader.onload = function (event) {
+          const imageTarget = input.getAttribute('data-image-target');
+          const imgElement = document.querySelector('[data-image="' + imageTarget + '"]');
+          if (imgElement) {
+            imgElement.setAttribute('src', event.target.result);
+            imgElement.classList.remove('hidden');
+          }
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    });
+  });
+});
+
+
+</script> %>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const inputElement = document.querySelector('[data-image-target="input"]');
+  const previewContainer = document.getElementById('image-preview-container');
+
+  inputElement.addEventListener('change', function (event) {
+    const fileList = event.target.files;
+
+    // Xóa tất cả các tấm hình hiện có trong preview container
+    previewContainer.innerHTML = '';
+
+    for (let i = 0; i < fileList.length; i++) {
+      const file = fileList[i];
+
+      // Kiểm tra nếu là tệp hình ảnh
+      if (file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = function (event) {
+          // Tạo một phần tử img để hiển thị tấm hình
+          const imgElement = document.createElement('img');
+          imgElement.setAttribute('src', event.target.result);
+          imgElement.classList.add('preview-image');
+
+          // Thêm tấm hình vào preview container
+          previewContainer.appendChild(imgElement);
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  });
+});
+
 </script>
