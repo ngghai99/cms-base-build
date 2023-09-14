@@ -71,32 +71,34 @@
   });
 </script>
 <script>
+  let isEventBound = false;
+  document.addEventListener('DOMContentLoaded', function () {
+    if (!isEventBound) {
+      const inputElement = document.querySelector('[data-image-target="input"]');
+      const previewContainer = document.getElementById('image-preview-container');
 
-document.addEventListener('DOMContentLoaded', function () {
-  const inputElement = document.querySelector('[data-image-target="input"]');
-  const previewContainer = document.getElementById('image-preview-container');
+      inputElement.addEventListener('change', function (event) {
+        const fileList = event.target.files;
 
-  inputElement.addEventListener('change', function (event) {
-    const fileList = event.target.files;
+        for (let i = 0; i < fileList.length; i++) {
+          const file = fileList[i];
 
-    for (let i = 0; i < fileList.length; i++) {
-      const file = fileList[i];
-
-      // Kiểm tra nếu là tệp hình ảnh
-      if (file.type.startsWith('image/')) {
-        const reader = new FileReader();
-        reader.onload = function (event) {
-          // Tạo một phần tử img để hiển thị tấm hình
-          const imgElement = document.createElement('img');
-          imgElement.setAttribute('src', event.target.result);
-          imgElement.classList.add('preview-image');
-
-          // Thêm tấm hình vào preview container
-          previewContainer.appendChild(imgElement);
-        };
-        reader.readAsDataURL(file);
-      }
+          // Kiểm tra nếu là tệp hình ảnh
+          if (file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+              // Tạo một phần tử img để hiển thị tấm hình
+              const imgElement = document.createElement('img');
+              imgElement.setAttribute('src', event.target.result);
+              imgElement.classList.add('preview-image');
+              // Thêm tấm hình vào preview container
+              previewContainer.appendChild(imgElement);
+            };
+            reader.readAsDataURL(file);
+          }
+        }
+      });
+      isEventBound = true;
     }
   });
-});
 </script>
