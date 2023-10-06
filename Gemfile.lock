@@ -123,6 +123,7 @@ GEM
     erubi (1.12.0)
     execjs (2.8.1)
     ffi (1.15.5)
+    foreman (0.87.2)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -277,6 +278,7 @@ DEPENDENCIES
   devise (= 4.8.1)
   dotenv-rails
   draper
+  foreman
   i18n
   importmap-rails
   jbuilder

@@ -47,6 +47,7 @@ gem 'pg'
 gem 'bootstrap'
 gem "carrierwave"
 gem 'mini_magick'
+gem 'foreman'
 #####
 
 # Use Sass to process CSS
