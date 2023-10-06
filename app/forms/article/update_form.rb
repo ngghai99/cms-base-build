@@ -1,4 +1,4 @@
-class Article::UpdateForm
+class \ádsadsad::UpdateForm
   include ActiveModel::Model
   attr_accessor :title, :content, :images, :status, :slug, :order, :article_catalogue_id
 
