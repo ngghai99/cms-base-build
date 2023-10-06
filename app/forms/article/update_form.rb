@@ -1,4 +1,4 @@
-class Article::CreateForm
+class Article::UpdateForm
   include ActiveModel::Model
   attr_accessor :title, :content, :images, :status, :slug, :order, :article_catalogue_id, :params
 
@@ -8,13 +8,13 @@ class Article::CreateForm
   def initialize(params={})
     @params = params
 
-    return unless params[:article_create_form].present?
+    return unless params[:article].present?
     super(article_params)
   end
 
   def save
     if valid?
-      create_article
+      update_article
     else
       false
     end
@@ -23,10 +23,10 @@ class Article::CreateForm
   private
 
   def article_params
-    params.require(:article_create_form).permit(:title, :content, :image, :status, :description, :article_catalogue_id, images: [])
+    params.require(:article).permit(:title, :content, :image, :status, :description, :article_catalogue_id, images: [])
   end
 
-  def create_article
-    Article.create!(article_params)
+  def update_article
+    Article.update!(article_params)
   end
 end
