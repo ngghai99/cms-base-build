@@ -1,3 +1,2 @@
-web: cd frontend && npm run dev
+web: cd frontend && npm run dev -- -p 3000
 api: bin/rails server -p 3001
-debug: bin/rdbg --port 3001 --open --nonstop -- bin/rails server --debug
