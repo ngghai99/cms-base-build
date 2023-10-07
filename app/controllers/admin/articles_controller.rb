@@ -12,16 +12,16 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def create
-    @article_form = Article::CreateForm.new(admin_create_article_params)
+    @article_form = Article::CreateForm.new(params)
     handle_form_save('articles.save_article_sucessfully')
   end
 
   def edit
-    @article_form = Article::UpdateForm.new(@admin_article_attr)
+    @article_form = Article::UpdateForm.new(@admin_article).params
   end
 
   def update
-    @article_form = Article::UpdateForm.new(admin_update_article_params)
+    @article_form = Article::UpdateForm.new(params)
     handle_form_save('articles.update_article_sucessfully')
   end
 
@@ -34,20 +34,6 @@ class Admin::ArticlesController < ApplicationController
 
   def set_admin_article
     @admin_article = Article.find(params[:id])
-
-    @admin_article_attr = @admin_article.attributes.slice(
-      "title", "content",
-      "images", "status",
-      "description", "article_catalogue_id"
-    ) if @admin_article.present?
-  end
-
-  def admin_create_article_params
-    params.require(:article_create_form).permit(:title, :content, :image, :status, :description, :article_catalogue_id, images: [])
-  end
-
-  def admin_update_article_params
-    params.require(:article_update_form).permit(:title, :content, :image, :status, :description, :article_catalogue_id, images: [])
   end
 
   def handle_form_save(success_message)

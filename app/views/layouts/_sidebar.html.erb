@@ -37,8 +37,17 @@
         <li class="nav-item">
           <%= link_to admin_articles_path, class: "nav-link" do %>
             <i class="nav-icon fas fa-th"></i>
-            <p>
+            <p style="color: #c2c7d0;">
               Article
+              <span class="right badge badge-danger">New</span>
+            </p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admin_users_path, class: "nav-link" do %>
+            <i class="nav-icon fas fa-th"></i>
+            <p style="color: #c2c7d0;">
+              User
               <span class="right badge badge-danger">New</span>
             </p>
           <% end %>

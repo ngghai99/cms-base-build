@@ -1,13 +1,12 @@
 class Article::CreateForm
   include ActiveModel::Model
-  attr_accessor :title, :content, :images, :status, :slug, :order, :article_catalogue_id
-
-  validates :title, presence: true
-  validates :content, presence: true
+  attr_accessor :title, :content, :images, :status, :slug, :order, :article_catalogue_id, :params
 
   def initialize(params={})
     @params = params
-    super(params)
+
+    return unless params[:article_create_form].present?
+    super(article_params)
   end
 
   def save
@@ -20,7 +19,11 @@ class Article::CreateForm
 
   private
 
+  def article_params
+    params.require(:article_create_form).permit(:title, :content, :image, :status, :description, :article_catalogue_id, images: [])
+  end
+
   def create_article
-    Article.create!(@params)
+    Article.create!(article_params)
   end
 end

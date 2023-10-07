@@ -25,7 +25,7 @@ class ArticlesController < ApplicationController
   def update
     @article = Article.update(article_params)
     if @article.save
-    redirect_to articles_path, notice: I18n.t('Article was successfully updated')
+      redirect_to articles_path, notice: I18n.t('Article was successfully updated')
     else
       render :edit
     end
@@ -45,6 +45,4 @@ class ArticlesController < ApplicationController
   def article_params
     params.require(:article).permit(:title, :image, :status, :description, :article_catalogue_id, :images)
   end
-
-
 end

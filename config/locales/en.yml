@@ -10,3 +10,6 @@ en:
     save_article_sucessfully: Article was successfully created
     update_article_sucessfully: Article was successfully updated
     title_background: Title Background
+  users:
+    active: Active
+    inactive: Inactive

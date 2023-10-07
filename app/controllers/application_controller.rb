@@ -4,7 +4,13 @@ class ApplicationController < ActionController::Base
   protected
 
   def after_sign_in_path_for(resource)
-    admin_dashboard_index_path
+    if resource.is_admin?
+      admin_dashboard_index_path
+    elsif resource.is_client?
+      root_path
+    else
+      false
+    end
   end
 
   def layout_by_resource
@@ -15,3 +21,4 @@ class ApplicationController < ActionController::Base
     end
   end
 end
+
