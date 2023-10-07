@@ -1,91 +1,10 @@
 import React from 'react'
+import { Footer, Nav } from '@/components'
 
 export default function Home() {
   return (
     <>
-      <header className="navigation">
-        <div className="container">
-          <nav className="navbar navbar-expand-lg navbar-light px-0">
-            <a className="navbar-brand order-1 py-0" href="index.html">
-              <img
-                loading="prelaod"
-                decoding="async"
-                className="img-fluid"
-                src="images/logo.png"
-                alt="Reporter Hugo"
-              />
-            </a>
-            <div className="navbar-actions order-3 ml-0 ml-md-4">
-              <button
-                aria-label="navbar toggler"
-                className="navbar-toggler border-0"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navigation"
-              >
-                {" "}
-                <span className="navbar-toggler-icon" />
-              </button>
-            </div>
-            <form
-              action="#!"
-              className="search order-lg-3 order-md-2 order-3 ml-auto"
-            >
-              <input
-                id="search-query"
-                name="s"
-                type="search"
-                placeholder="Search..."
-                autoComplete="off"
-              />
-            </form>
-            <div
-              className="collapse navbar-collapse text-center order-lg-2 order-4"
-              id="navigation"
-            >
-              <ul className="navbar-nav mx-auto mt-3 mt-lg-0">
-                <li className="nav-item">
-                  {" "}
-                  <a className="nav-link" href="about.html">
-                    About Me
-                  </a>
-                </li>
-                <li className="nav-item dropdown">
-                  {" "}
-                  <a
-                    className="nav-link dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    Articles
-                  </a>
-                  <div className="dropdown-menu">
-                    {" "}
-                    <a className="dropdown-item" href="travel.html">
-                      Travel
-                    </a>
-                    <a className="dropdown-item" href="travel.html">
-                      Lifestyle
-                    </a>
-                    <a className="dropdown-item" href="travel.html">
-                      Cruises
-                    </a>
-                  </div>
-                </li>
-                <li className="nav-item">
-                  {" "}
-                  <a className="nav-link" href="contact.html">
-                    Contact
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </div>
-      </header>
+      <Nav />
       <main>
         <section className="section">
           <div className="container">
@@ -703,59 +622,7 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <footer className="bg-dark mt-5">
-        <div className="container section">
-          <div className="row">
-            <div className="col-lg-10 mx-auto text-center">
-              <a className="d-inline-block mb-4 pb-2" href="index.html">
-                <img
-                  loading="prelaod"
-                  decoding="async"
-                  className="img-fluid"
-                  src="images/logo-white.png"
-                  alt="Reporter Hugo"
-                />
-              </a>
-              <ul className="p-0 d-flex navbar-footer mb-0 list-unstyled">
-                <li className="nav-item my-0">
-                  {" "}
-                  <a className="nav-link" href="about.html">
-                    About
-                  </a>
-                </li>
-                <li className="nav-item my-0">
-                  {" "}
-                  <a className="nav-link" href="article.html">
-                    Elements
-                  </a>
-                </li>
-                <li className="nav-item my-0">
-                  {" "}
-                  <a className="nav-link" href="privacy-policy.html">
-                    Privacy Policy
-                  </a>
-                </li>
-                <li className="nav-item my-0">
-                  {" "}
-                  <a className="nav-link" href="terms-conditions.html">
-                    Terms Conditions
-                  </a>
-                </li>
-                <li className="nav-item my-0">
-                  {" "}
-                  <a className="nav-link" href="404.html">
-                    404 Page
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div className="copyright bg-dark content">
-          Designed &amp; Developed By{" "}
-          <a href="https://themefisher.com/">Themefisher</a>
-        </div>
-      </footer>
+      <Footer />
     </>
   )
 }
