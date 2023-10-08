@@ -23,6 +23,8 @@ class Article::CreateForm
     params.require(:article_create_form).permit(:title, :content, :image, :status, :description, :article_catalogue_id, images: [])
   end
 
+
+
   def create_article
     Article.create!(article_params)
   end
