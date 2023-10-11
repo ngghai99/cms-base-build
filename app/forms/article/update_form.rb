@@ -12,7 +12,7 @@ class Article::UpdateForm
 
   def save
     if valid?
-      create_article
+      update_article
     else
       false
     end
@@ -25,6 +25,6 @@ class Article::UpdateForm
   end
 
   def update_article
-    article.update!(article_params)
+    Article.update!(article_params)
   end
 end
