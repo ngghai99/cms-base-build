@@ -25,6 +25,6 @@ class Article::UpdateForm
   end
 
   def update_article
-    Article.update!(article_params)
+    article.update!(article_params)
   end
 end
