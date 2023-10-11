@@ -1,11 +1,12 @@
 class Article::UpdateForm
   include ActiveModel::Model
-  attr_accessor :title, :content, :images, :status, :slug, :order, :article_catalogue_id, :params
+  attr_accessor :title, :content, :images, :status, :slug, :order, :article_catalogue_id, :params, :article
 
   def initialize(params={})
+    @article = Article.find_by(id: params[:id])
     @params = params
 
-    return unless params[:article].present?
+    return unless params[:article].present? && @article.present?
     super(article_params)
   end
 
@@ -24,6 +25,6 @@ class Article::UpdateForm
   end
 
   def update_article
-    Article.update!(article_params)
+    article.update!(article_params)
   end
 end
