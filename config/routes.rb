@@ -10,12 +10,14 @@ Rails.application.routes.draw do
     get '', to: 'dashboard#index'
     resources :dashboard
     resources :articles
-  end
+    resources :users
 
-  resources :articles
+  end
 
   namespace :client do
     resources :articles
+    resources :users
+
   end
 
   root 'site#index'

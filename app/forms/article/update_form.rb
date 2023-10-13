@@ -2,9 +2,6 @@ class Article::UpdateForm
   include ActiveModel::Model
   attr_accessor :title, :content, :images, :status, :slug, :order, :article_catalogue_id, :params, :article
 
-  validates :title, presence: true
-  validates :content, presence: true
-
   def initialize(params={})
     @article = Article.find_by(id: params[:id])
     @params = params

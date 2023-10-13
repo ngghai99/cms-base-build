@@ -1,3 +1,6 @@
 vi:
   articles:
     title: Tiêu Đề
+  users:
+    active: Hoạt động
+    inactive: Không hoạt động

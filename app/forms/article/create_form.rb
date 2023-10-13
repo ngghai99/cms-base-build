@@ -2,9 +2,6 @@ class Article::CreateForm
   include ActiveModel::Model
   attr_accessor :title, :content, :images, :status, :slug, :order, :article_catalogue_id, :params
 
-  validates :title, presence: true
-  validates :content, presence: true
-
   def initialize(params={})
     @params = params
 
@@ -25,6 +22,8 @@ class Article::CreateForm
   def article_params
     params.require(:article_create_form).permit(:title, :content, :image, :status, :description, :article_catalogue_id, images: [])
   end
+
+
 
   def create_article
     Article.create!(article_params)
