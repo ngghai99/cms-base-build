@@ -28,7 +28,7 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @admin_user.destroy
-    redirect_to admin_users_url, notice: I18n.t('Destroyed successfully!')
+    redirect_to admin_users_url, notice: I18n.t('users.destroyed_successfully!')
   end
 
   private

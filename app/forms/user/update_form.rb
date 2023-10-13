@@ -1,9 +1,10 @@
 class User::UpdateForm
   include ActiveModel::Model
   attr_accessor :name, :password, :password_confirmation, :phone, :address, :birthday, :status,
-                :gender, :email, :district_name, :ward_name, :type, :image, :params
+                :gender, :email, :district_name, :ward_name, :type, :image, :params, :user
 
   def initialize(params={})
+    @user = User.find_by(id: params[:id])
     @params = params
 
     return unless params[:user].present?
@@ -25,7 +26,7 @@ class User::UpdateForm
   end
 
     def update_user
-      User.update!(user_params)
+      user.update!(user_params)
     end
 end
 
