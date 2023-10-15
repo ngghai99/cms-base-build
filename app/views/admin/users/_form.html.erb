@@ -57,7 +57,7 @@
               </div>
 
             <div class="form-group">
-              <img src='<%= f.object.image if f.object.image.present?%>' id="blah" alt="your image" onError="this.onerror=null;this.src='/images/no_image.png'" width="50" height="50" />
+              <img src='<%= f.object.image if f.object.image.present?%>' id="blah" alt="your image" onError="this.onerror=null;this.src='/images/no_image.png'" value="<%= f.object.image if f.object.image.present? %>" width="50" height="50" />
 
             <div stype='margin-top: 10px;'>
               <%= f.file_field :upload_image, onchange: "document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])"%>

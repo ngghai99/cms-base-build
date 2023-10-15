@@ -22,8 +22,12 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
-    @user_form = User::UpdateForm.new(params)
-    handle_form_save('users.update_article_successfully')
+    if current_user == @admin_user
+      @user_form = User::UpdateForm.new(params)
+      handle_form_save('users.update_article_successfully')
+    else
+      redirect_to admin_users_url, notice: I18n.t('You do not have permission to edit other users.')
+    end
   end
 
   def destroy

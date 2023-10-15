@@ -23,6 +23,7 @@
               <th><%= t('users.email') %></th>
               <th><%= t('users.status') %></th>
               <th><%= t('users.created_at') %></th>
+              <th colspan="3"></th>
             </tr>
           </thead>
           <tbody>
@@ -32,9 +33,13 @@
               <td><%= admin_user.email %></td>
               <td><%= admin_user.decorate_status %></td>
               <td><%= admin_user.created_at.strftime('%d-%m-%Y') %></td>
+              <% if admin_user == @current_user %>
               <td class="pull-right">
                 <%= link_to t('button.edit'), edit_admin_user_path(admin_user.id), class: "btn-xs btn btn-warning" %>
               </td>
+              <% else %>
+                <td></td>
+              <% end %>
               <td class="width60">
                 <%= link_to 'Destroy', admin_user_path(admin_user.id), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "btn-xs btn btn-danger" %></td>
               </td>
