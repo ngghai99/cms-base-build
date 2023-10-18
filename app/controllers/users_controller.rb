@@ -17,20 +17,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-    if current_user.can_update_profile?(@admin_user)
-      @user_form = User::UpdateForm.new(@user).params
-    else
-      redirect_to users_url, notice: I18n.t('permissions.You_do_not_have_permission_to_edit_other_users')
-    end
+    @user_form = User::UpdateForm.new(@admin_user)
   end
 
   def update
-    if current_user.can_update_profile?(@admin_user)
-      @user_form = User::UpdateForm.new(user_params)
-      handle_form_save('users.update_article_sucessfully')
-    else
-      redirect_to users_url, notice: I18n.t('permissions.You_do_not_have_permission_to_update_other_users')
-    end
+    @user_form = User::UpdateForm.new(user_params)
+    handle_form_save('users.update_article_sucessfully')
   end
 
   def destroy

@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_admin_user, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -22,11 +23,11 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
-    if current_user == @admin_user
+    if current_user == @admin_user || @admin_user.is_client?
       @user_form = User::UpdateForm.new(params)
       handle_form_save('users.update_article_successfully')
     else
-      redirect_to admin_users_url, notice: I18n.t('You do not have permission to edit other users.')
+      redirect_to admin_users_url, notice: I18n.t('permission.You_do_not_have_permission_to_update_other_users.')
     end
   end
 
@@ -38,7 +39,7 @@ class Admin::UsersController < ApplicationController
   private
 
   def set_admin_user
-    @admin_user = User.find(params[:id]).decorate
+    @admin_user = User.find(params[:id])
   end
 
   def handle_form_save(success_message)

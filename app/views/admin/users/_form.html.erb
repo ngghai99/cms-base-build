@@ -13,67 +13,52 @@
               </div>
 
               <div class="form-group">
-                <%= f.label :password, safe_join([t('admin.users.password'), content_tag(:small, " *", class: "text-danger")]) %><br>
-                <%= f.password_field :password, required: true, class: "form-control" %>
-              </div>
-
-              <div class="form-group">
-                <%= f.label :password_confirmation, safe_join([t('admin.users.password_confirmation'), content_tag(:small, " *", class: "text-danger")]) %><br>
-                <%= f.password_field :password_confirmation, required: true, class: "form-control" %>
-              </div>
-
-              <div class="form-group">
                 <%= f.label :phone %>
                 <%= f.number_field :phone,  value: @admin_user&.phone, class: "form-control" %>
               </div>
+              <div class="form-group">
+                <%= f.label :email, safe_join([t('admin.users.email'), content_tag(:small, " *", class: "text-danger")]) %>
+                <%= f.text_field :email, value: @admin_user&.email, required: true , class: "form-control" %>
+              </div>
+              <div class="form-group">
+                <img src='<%= f.object.image if f.object.image.present?%>' id="blah" alt="your image" onError="this.onerror=null;this.src='/images/no_image.png'" value="<%= f.object.image if f.object.image.present? %>" width="50" height="50" />
+                <div stype='margin-top: 10px;'>
+                  <%= f.file_field :upload_image, onchange: "document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])"%>
+                </div>
+              </div>
+          </div>
 
+          <div class="col-md-6">
             <div class="form-group">
-              <%= f.label :email, safe_join([t('admin.users.email'), content_tag(:small, " *", class: "text-danger")]) %>
-              <%= f.text_field :email, value: @admin_user&.email, required: true , class: "form-control" %>
+              <%= f.label :status %><br>
+              <%= f.select :status, [[t('status.active'), :active], [t('status.disable'), :disable]], {}, { class: "form-control" }   %>
             </div>
-
-
-            </div>
-
-            <div class="col-md-6">
-              <div class="form-group">
-                <%= f.label :status %><br>
-                <%= f.select :status, [[t('status.active'), :active], [t('status.disable'), :disable]], {}, { class: "form-control" }   %>
-              </div>
-
-              <div class="form-group">
-                <%= f.label :gender %>
-                <%= f.select :gender, [[t('users.male'), :male], [t('users.fermale'), :fermale], [t('users.other'), :other] ], {}, { value: @admin_user&.gender, class: "form-control" }   %>
-              </div>
-
-              <div class="form-group">
-                <%= f.label :birthday %>
-                <%= f.date_field :birthday, value: @admin_user&.birthday, class: "form-control" %>
-              </div>
-
-              <div class="form-group">
-                <%= f.label :address %>
-                <%= f.text_field :address, value: @admin_user&.address, class: "form-control" %>
-              </div>
-
             <div class="form-group">
-              <img src='<%= f.object.image if f.object.image.present?%>' id="blah" alt="your image" onError="this.onerror=null;this.src='/images/no_image.png'" value="<%= f.object.image if f.object.image.present? %>" width="50" height="50" />
-
-            <div stype='margin-top: 10px;'>
-              <%= f.file_field :upload_image, onchange: "document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])"%>
+              <%= f.label :type %><br>
+              <%= f.select :type, [[t('users.Admin'), 'Admin'], [t('users.Client'), 'Client']], {}, { class: "form-control" }   %>
+            </div>
+            <div class="form-group">
+              <%= f.label :gender %>
+              <%= f.select :gender, [[t('users.male'), :male], [t('users.fermale'), :fermale], [t('users.other'), :other] ], {}, { value: @admin_user&.gender, class: "form-control" }   %>
+            </div>
+            <div class="form-group">
+              <%= f.label :birthday %>
+              <%= f.date_field :birthday, value: @admin_user&.birthday, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :address %>
+              <%= f.text_field :address, value: @admin_user&.address, class: "form-control" %>
             </div>
           </div>
         </div>
-
-          <br>
-          <div class="actions">
-            <%= f.submit "Save" , class: "btn btn-sm btn-success" %>
-          </div>
+        <br>
+        <div class="actions">
+          <%= f.submit "Save" , class: "btn btn-sm btn-success" %>
+        </div>
       </div>
     </div>
   </div>
 <% end %>
-
 
 <script>
   tinymce.remove();
