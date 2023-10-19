@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user_form = User::UpdateForm.new(@user).params
+    @user_form = User::UpdateForm.new(@admin_user)
   end
 
   def update

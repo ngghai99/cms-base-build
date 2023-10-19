@@ -1,4 +1,3 @@
-
 <div class="admin main content  ">
   <%= render 'shared/notice' %>
   <div class="card box-solid">
@@ -7,33 +6,33 @@
         <div class="col-md-6">
           <p>
             <strong><%= t('admin.users.name')%>:</strong>
-            <%= @admin_user.name %>
+            <%= @admin_client.name %>
           </p>
           <p>
             <strong><%= t('admin.users.email')%>:</strong>
-            <%= @admin_user.email %>
+            <%= @admin_client.email %>
           </p>
           <p>
             <strong><%= t('admin.users.phone')%>:</strong>
-            <%= @admin_user.phone %>
+            <%= @admin_client.phone %>
           </p>
         </div>
         <div class="col-md-6">
           <p>
             <strong><%= t('admin.users.status')%>:</strong>
-            <%= @admin_user.decorate_status %>
+            <%= @admin_client.decorate.decorate_status %>
           </p>
           <p>
             <strong><%= t('admin.users.birthday')%>:</strong>
-            <%= @admin_user.birthday %>
+            <%= @admin_client.birthday %>
           </p>
           <p>
             <strong><%= t('admin.users.address')%>:</strong>
-            <%= @admin_user.address %>
+            <%= @admin_client.address %>
           </p>
         </div>
       </div>
-      <%= link_to t('admin.buttons.edit'), edit_admin_user_path(@admin_user), class: "btn btn-warning btn-sm" %>
+      <%= link_to t('admin.buttons.edit'), edit_admin_user_path(@admin_client), class: "btn btn-warning btn-sm" %>
 			<%= link_to t('admin.buttons.back'), admin_users_path, class: "btn btn-primary btn-sm" %>
     </div>
   </div>

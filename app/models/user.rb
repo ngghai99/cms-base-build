@@ -5,7 +5,6 @@ class User < ApplicationRecord
   enum status: [:active, :inactive]
   enum gender: [:male, :fermale, :other]
 
-
   validates :name, presence: true
   # validates :email, uniqueness: { scope: :deleted_at },
   # format: {
@@ -13,8 +12,6 @@ class User < ApplicationRecord
   # }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-
-
 
   scope :filter_by, lambda { |params|
     filter_by_name(params)
@@ -35,5 +32,9 @@ class User < ApplicationRecord
 
   def is_admin?
     type == "Admin"
+  end
+
+  def check_permissions(current_user)
+    current_user.is_admin? && (current_user.id == id || is_client? )
   end
 end
