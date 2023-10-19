@@ -45,7 +45,7 @@ export default function Nav() {
             <ul className="navbar-nav mx-auto mt-3 mt-lg-0">
               <li className="nav-item">
                 {" "}
-                <a className="nav-link" href="about.html">
+                <a className="nav-link" href="http://localhost:3000">
                   About Me
                 </a>
               </li>
