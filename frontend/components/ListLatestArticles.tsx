@@ -1,150 +1,70 @@
-import React from 'react'
+"use client"
+import React, { useEffect, useState } from 'react';
+import api from '../utils/api';
+import baseURL from '../utils/api';
 
 export default function LatestArticles() {
+  const [articles, setArticles] = useState([]);
+  const API_URL = process.env.API_URL
+  console.log(API_URL)
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await api.get('/articles');
+        setArticles(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchData();
+  }, []);
   return (
     <>
       <div className="col-12">
-        <h2 className="section-title">Latest Articles</h2>
+        <h2 className="section-title">{}</h2>
       </div>
       <div className="col-lg-8 mb-5 mb-lg-0">
         <div className="row">
-          {/* latest */}
-          <div className="col-12 mb-4">
-            <article className="card article-card">
-              <a href="article.html">
-                <div className="card-image">
-                  <div className="post-info">
-                    {" "}
-                    <span className="text-uppercase">04 Jun 2021</span>
-                    <span className="text-uppercase">3 minutes read</span>
+          {
+            articles.map(article =>
+              <div className="col-md-6 mb-4">
+              <article className="card article-card article-card-sm h-100">
+                <a href="article.html">
+                  <div className="card-image">
+                    <div className="post-info">
+                      {" "}
+                      <span className="text-uppercase">03 Jun 2021</span>
+                      <span className="text-uppercase">2 minutes read</span>
+                    </div>
+                    {article.images[0] && <img loading="lazy" src={API_URL + article.images[0].url} alt="Image" decoding="async" className="w-100 img-card-list" />}
                   </div>
-                  <img
-                    loading="lazy"
-                    decoding="async"
-                    src="images/post/post-1.jpg"
-                    alt="Post Thumbnail"
-                    className="w-100"
-                  />
-                </div>
-              </a>
-              <div className="card-body px-0 pb-1">
-                <ul className="post-meta mb-2">
-                  <li>
+                </a>
+                <div className="card-body px-0 pb-0">
+                  <ul className="post-meta mb-2">
+                    <li>
+                      {" "}
+                      <a href="#!">travel</a>
+                    </li>
+                  </ul>
+                  <h2>
+                    <a className="post-title" href="article.html">
+                      {article.title}
+                    </a>
+                  </h2>
+                  <div className='small-text-description' dangerouslySetInnerHTML={{ __html: article.content.substring(0, 200)}}></div>
+                  <div className="content">
                     {" "}
-                    <a href="#!">travel</a>
-                    <a href="#!">news</a>
-                  </li>
-                </ul>
-                <h2 className="h1">
-                  <a className="post-title" href="article.html">
-                    Is it Ethical to Travel Now? With that Freedom Comes
-                    Responsibility.
-                  </a>
-                </h2>
-                <p className="card-text">
-                  Heading Here is example of hedings. You can use this
-                  heading by following markdownify rules. For example: use #
-                  for heading 1 and use ###### for heading 6.
-                </p>
-                <div className="content">
-                  {" "}
-                  <a className="read-more-btn" href="article.html">
-                    Read Full Article
-                  </a>
-                </div>
-              </div>
-            </article>
-          </div>
-          {/* latest */}
-          <div className="col-md-6 mb-4">
-            <article className="card article-card article-card-sm h-100">
-              <a href="article.html">
-                <div className="card-image">
-                  <div className="post-info">
-                    {" "}
-                    <span className="text-uppercase">03 Jun 2021</span>
-                    <span className="text-uppercase">2 minutes read</span>
+                    <a className="read-more-btn" href="article.html">
+                      Read Full Article
+                    </a>
                   </div>
-                  <img
-                    loading="lazy"
-                    decoding="async"
-                    src="images/post/post-2.jpg"
-                    alt="Post Thumbnail"
-                    className="w-100"
-                  />
                 </div>
-              </a>
-              <div className="card-body px-0 pb-0">
-                <ul className="post-meta mb-2">
-                  <li>
-                    {" "}
-                    <a href="#!">travel</a>
-                  </li>
-                </ul>
-                <h2>
-                  <a className="post-title" href="article.html">
-                    An Experiential Guide to Explore This Kingdom
-                  </a>
-                </h2>
-                <p className="card-text">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore magna
-                  …
-                </p>
-                <div className="content">
-                  {" "}
-                  <a className="read-more-btn" href="article.html">
-                    Read Full Article
-                  </a>
-                </div>
+              </article>
               </div>
-            </article>
-          </div>
-          <div className="col-md-6 mb-4">
-            <article className="card article-card article-card-sm h-100">
-              <a href="article.html">
-                <div className="card-image">
-                  <div className="post-info">
-                    {" "}
-                    <span className="text-uppercase">02 Jun 2021</span>
-                    <span className="text-uppercase">2 minutes read</span>
-                  </div>
-                  <img
-                    loading="lazy"
-                    decoding="async"
-                    src="images/post/ls-2.jpg"
-                    alt="Post Thumbnail"
-                    className="w-100"
-                  />
-                </div>
-              </a>
-              <div className="card-body px-0 pb-0">
-                <ul className="post-meta mb-2">
-                  <li>
-                    {" "}
-                    <a href="#!">lifestyle</a>
-                  </li>
-                </ul>
-                <h2>
-                  <a className="post-title" href="article.html">
-                    What to Do in Houston: Ideas for Your Visit
-                  </a>
-                </h2>
-                <p className="card-text">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore magna
-                  …
-                </p>
-                <div className="content">
-                  {" "}
-                  <a className="read-more-btn" href="article.html">
-                    Read Full Article
-                  </a>
-                </div>
-              </div>
-            </article>
-          </div>
-          {/* page */}
+              )
+          }
           <div className="col-12">
             <div className="row">
               <div className="col-12">
@@ -210,7 +130,6 @@ export default function LatestArticles() {
               </div>
             </div>
           </div>
-          {/* page */}
         </div>
       </div>
     </>

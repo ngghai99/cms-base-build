@@ -943,3 +943,11 @@ footer .section {
   box-shadow: none;
 }
 /*# sourceMappingURL=style.css.map */
+
+.small-text-description .detail-title {
+  font-size: 15px !important;
+}
+
+.img-card-list {
+  max-height: 250px;
+}
