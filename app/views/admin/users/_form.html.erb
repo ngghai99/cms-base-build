@@ -1,24 +1,33 @@
-<%= form_for [:admin, @user_form], url: @admin_user.present? ? admin_user_path(@admin_user) : admin_users_path, method: @admin_user.present? ? :put : :post, data: { turbo: false } do |f| %>
+<%= form_for [:admin, @client_form], url: @admin_client.present? ? admin_user_path(@admin_client) : admin_users_path, method: @admin_client.present? ? :put : :post, data: { turbo: false } do |f| %>
   <div class="card card-primary card-tabs box-solid">
     <div class="card-header p-0 pt-1" style="background-color: #6c757d;"></div>
     <div class="card-body">
       <div class="tab-content" id="custom-tabs-one-tabContent">
         <div class="tab-pane fade show active" id="tab_1">
-          <%= render partial: 'shared/error_messages', locals: { object: @user_form } %>
+          <%= render partial: 'shared/error_messages', locals: { object: @client_form } %>
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
                 <%= f.label :name, safe_join([t('admin.users.name'), content_tag(:small, " *", class: "text-danger")]) %><br>
-                <%= f.text_field :name, value: @admin_user&.name, class: "form-control" %>
+                <%= f.text_field :name, value: @admin_client&.name, class: "form-control" %>
               </div>
-
+              <% unless @admin_client.present? %>
+                <div class="form-group">
+                  <%= f.label :password, safe_join([t('admin.users.password'), content_tag(:small, " *", class: "text-danger")]) %><br>
+                  <%= f.password_field :password, required: true, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                  <%= f.label :password_confirmation, safe_join([t('admin.users.password_confirmation'), content_tag(:small, " *", class: "text-danger")]) %><br>
+                  <%= f.password_field :password_confirmation, required: true, class: "form-control" %>
+                </div>
+              <% end %>
               <div class="form-group">
                 <%= f.label :phone %>
-                <%= f.number_field :phone,  value: @admin_user&.phone, class: "form-control" %>
+                <%= f.number_field :phone,  value: @admin_client&.phone, class: "form-control" %>
               </div>
               <div class="form-group">
                 <%= f.label :email, safe_join([t('admin.users.email'), content_tag(:small, " *", class: "text-danger")]) %>
-                <%= f.text_field :email, value: @admin_user&.email, required: true , class: "form-control" %>
+                <%= f.text_field :email, value: @admin_client&.email, required: true , class: "form-control" %>
               </div>
               <div class="form-group">
                 <img src='<%= f.object.image if f.object.image.present?%>' id="blah" alt="your image" onError="this.onerror=null;this.src='/images/no_image.png'" value="<%= f.object.image if f.object.image.present? %>" width="50" height="50" />
@@ -27,7 +36,6 @@
                 </div>
               </div>
           </div>
-
           <div class="col-md-6">
             <div class="form-group">
               <%= f.label :status %><br>
@@ -39,15 +47,15 @@
             </div>
             <div class="form-group">
               <%= f.label :gender %>
-              <%= f.select :gender, [[t('users.male'), :male], [t('users.fermale'), :fermale], [t('users.other'), :other] ], {}, { value: @admin_user&.gender, class: "form-control" }   %>
+              <%= f.select :gender, [[t('users.male'), :male], [t('users.fermale'), :fermale], [t('users.other'), :other] ], {}, { value: @admin_client&.gender, class: "form-control" }   %>
             </div>
             <div class="form-group">
               <%= f.label :birthday %>
-              <%= f.date_field :birthday, value: @admin_user&.birthday, class: "form-control" %>
+              <%= f.date_field :birthday, value: @admin_client&.birthday, class: "form-control" %>
             </div>
             <div class="form-group">
               <%= f.label :address %>
-              <%= f.text_field :address, value: @admin_user&.address, class: "form-control" %>
+              <%= f.text_field :address, value: @admin_client&.address, class: "form-control" %>
             </div>
           </div>
         </div>

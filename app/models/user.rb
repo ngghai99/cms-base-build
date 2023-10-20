@@ -33,4 +33,8 @@ class User < ApplicationRecord
   def is_admin?
     type == "Admin"
   end
+
+  def check_permissions(current_user)
+    current_user.is_admin? && (current_user.id == id || is_client? )
+  end
 end

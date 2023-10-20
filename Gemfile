@@ -50,6 +50,7 @@ gem 'bootstrap'
 gem "carrierwave"
 gem 'mini_magick'
 gem 'foreman'
+gem 'rack-cors'
 #####
 
 # Use Sass to process CSS

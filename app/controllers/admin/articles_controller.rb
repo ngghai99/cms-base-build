@@ -12,7 +12,7 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def create
-    @article_form = Article::CreateForm.new(params)
+    @article_form = Article::CreateForm.new(create_article_params)
     handle_form_save('articles.save_article_sucessfully')
   end
 
@@ -21,7 +21,7 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def update
-    @article_form = Article::UpdateForm.new(params)
+    @article_form = Article::UpdateForm.new(update_article_params, params[:id])
     handle_form_save('articles.update_article_sucessfully')
   end
 
@@ -34,6 +34,14 @@ class Admin::ArticlesController < ApplicationController
 
   def set_admin_article
     @admin_article = Article.find(params[:id])
+  end
+
+  def create_article_params
+    params.require(:article_create_form).permit(:title, :content, :image, :status, :description, :article_catalogue_id, :mini_description, images: [])
+  end
+
+  def update_article_params
+    params.require(:article).permit(:title, :content, :image, :status, :description, :article_catalogue_id, :mini_description, images: [])
   end
 
   def handle_form_save(success_message)

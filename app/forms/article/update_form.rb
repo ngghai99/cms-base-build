@@ -1,13 +1,13 @@
 class Article::UpdateForm
   include ActiveModel::Model
-  attr_accessor :title, :content, :images, :status, :slug, :order, :article_catalogue_id, :params, :article
+  attr_accessor :title, :content, :images, :status, :slug, :order, :article_catalogue_id, :params, :article, :mini_description
 
-  def initialize(params={})
-    @article = Article.find_by(id: params[:id])
+  def initialize(params={}, article_id='')
+    @article = Article.find_by(id: article_id)
     @params = params
 
     return unless params[:article].present? && @article.present?
-    super(article_params)
+    super(params)
   end
 
   def save
@@ -20,11 +20,7 @@ class Article::UpdateForm
 
   private
 
-  def article_params
-    params.require(:article).permit(:title, :content, :image, :status, :description, :article_catalogue_id, images: [])
-  end
-
   def update_article
-    article.update!(article_params)
+    article.update!(params)
   end
 end
