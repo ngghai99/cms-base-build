@@ -28,9 +28,9 @@
             <% end %>
           <% end %>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12" style="pointer-events: none;">
           <strong><%= t('articles.content') %>:</strong>
-          <%= simple_format(@admin_article.content) %>
+          <%= text_area_tag 'mini_description', @admin_article.content, class: 'tinymce mini_description-show mt-5' %>
         </div>
       </div>
       <%= link_to t('helpers.action.edit'), edit_admin_article_path(@admin_article), class: "btn btn-warning btn-sm" %>
@@ -38,3 +38,15 @@
     </div>
   </div>
 </div>
+<script>
+  tinymce.remove();
+  tinymce.init({
+    selector: 'textarea',
+    plugins: 'lists link image table code help wordcount',
+    height : "1000",
+    menubar: false,
+    statusbar: false,
+    toolbar: false,
+    readonly : 1
+  });
+</script>
