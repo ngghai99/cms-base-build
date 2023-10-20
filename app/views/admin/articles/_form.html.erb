@@ -31,7 +31,13 @@
                 <%= f.select :status, [[t('status.active'), 'active'], [t('status.disable'), 'disable']], {}, { class: "form-control" }   %>
               </div>
             </div>
-
+            <div class="col-md-12">
+              <div class="form-group">
+                <%= f.label :mini_description %><br>
+                <%= f.text_field :mini_description, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
             <div class="mb-3" data-controller="image" id="Img">
               <%= f.label :images, class: "form-label"  %>
               <%= f.file_field :images, multiple: true, class: "form-control", accept: "image/png, image/jpeg, image/jpg", "data-image-target": "input" %>
@@ -45,8 +51,6 @@
                 <%= f.text_area :content, class: 'form-control ckeditor' %>
               </div>
             </div>
-
-          </div>
           <br>
           <div class="actions">
             <%= f.submit "Save" , class: "btn btn-sm btn-success" %>
