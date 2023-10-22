@@ -44,11 +44,10 @@
               <div id="image-preview-container" style="display: flex; flex-wrap: wrap; width: 75px ;height: 100px;">
               </div>
             </div>
-
             <div class="col-md-12">
               <div class="form-group">
                 <%= f.label :content %><br>
-                <%= f.text_area :content, class: 'form-control ckeditor' %>
+                <%= f.text_area :content, class: 'tinymce' %>
               </div>
             </div>
           <br>
@@ -61,17 +60,17 @@
   </div>
 <% end %>
 <style>
-  .custome-image {
+.custome-image {
   max-width: 100%;
-  max-height: 200px; /* Điều chỉnh kích thước tùy ý */
+  max-height: 200px;
 }
-
 </style>
 <script>
   tinymce.remove();
   tinymce.init({
     selector: 'textarea',
-    plugins: 'lists link image table code help wordcount'
+    plugins: 'lists link image table code help wordcount',
+    height : "700",
   });
 </script>
 <script>
@@ -87,15 +86,12 @@
         for (let i = 0; i < fileList.length; i++) {
           const file = fileList[i];
 
-          // Kiểm tra nếu là tệp hình ảnh
           if (file.type.startsWith('image/')) {
             const reader = new FileReader();
             reader.onload = function (event) {
-              // Tạo một phần tử img để hiển thị tấm hình
               const imgElement = document.createElement('img');
               imgElement.setAttribute('src', event.target.result);
               imgElement.classList.add('preview-image');
-              // Thêm tấm hình vào preview container
               previewContainer.appendChild(imgElement);
             };
             reader.readAsDataURL(file);
