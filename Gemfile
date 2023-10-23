@@ -51,6 +51,7 @@ gem "carrierwave"
 gem 'mini_magick'
 gem 'foreman'
 gem 'rack-cors'
+gem 'new_ckeditor'
 #####
 
 # Use Sass to process CSS

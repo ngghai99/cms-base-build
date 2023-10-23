@@ -30,7 +30,9 @@
         </div>
         <div class="col-md-12" style="pointer-events: none;">
           <strong><%= t('articles.content') %>:</strong>
-          <%= text_area_tag 'mini_description', @admin_article.content, class: 'tinymce mini_description-show mt-5' %>
+          <div class="ck-content">
+            <%= raw @admin_article.content.html_safe %>
+          </div>
         </div>
       </div>
       <%= link_to t('helpers.action.edit'), edit_admin_article_path(@admin_article), class: "btn btn-warning btn-sm" %>

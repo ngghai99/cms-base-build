@@ -41,13 +41,13 @@
             <div class="mb-3" data-controller="image" id="Img">
               <%= f.label :images, class: "form-label"  %>
               <%= f.file_field :images, multiple: true, class: "form-control", accept: "image/png, image/jpeg, image/jpg", "data-image-target": "input" %>
-              <div id="image-preview-container" style="display: flex; flex-wrap: wrap; width: 75px ;height: 100px;">
-              </div>
             </div>
+            <%= image_tag f.object.images.first.url, style: "max-height: 256px", id: 'img-show-detail' %>
+            <div id="image-preview-container"></div>
             <div class="col-md-12">
               <div class="form-group">
                 <%= f.label :content %><br>
-                <%= f.text_area :content, class: 'tinymce' %>
+                <%= f.ckeditor :content, class: 'form-control' %>
               </div>
             </div>
           <br>
@@ -65,21 +65,14 @@
   max-height: 200px;
 }
 </style>
-<script>
-  tinymce.remove();
-  tinymce.init({
-    selector: 'textarea',
-    plugins: 'lists link image table code help wordcount',
-    height : "700",
-  });
-</script>
+<%# width: 75px ;height: 100px; %>
 <script>
   let isEventBound = false;
   document.addEventListener('DOMContentLoaded', function () {
     if (!isEventBound) {
+      const imgDetail = document.getElementById('img-show-detail');
       const inputElement = document.querySelector('[data-image-target="input"]');
       const previewContainer = document.getElementById('image-preview-container');
-
       inputElement.addEventListener('change', function (event) {
         const fileList = event.target.files;
 
@@ -93,7 +86,12 @@
               imgElement.setAttribute('src', event.target.result);
               imgElement.classList.add('preview-image');
               previewContainer.appendChild(imgElement);
+              imgElement.style.maxHeight = '256px';
+              imgDetail.remove()
             };
+            if(previewContainer.firstChild) {
+              previewContainer.removeChild(previewContainer.firstChild);
+            }
             reader.readAsDataURL(file);
           }
         }

@@ -161,6 +161,8 @@ GEM
       timeout
     net-smtp (0.3.3)
       net-protocol
+    new_ckeditor (0.1.2)
+      rails
     nio4r (2.5.9)
     nokogiri (1.14.3-aarch64-linux)
       racc (~> 1.4)
@@ -289,6 +291,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   mini_magick
+  new_ckeditor
   pg
   puma (~> 5.0)
   rack-cors
