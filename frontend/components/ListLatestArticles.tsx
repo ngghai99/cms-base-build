@@ -1,5 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react';
+import Link from "next/link"
 import api from '../utils/api';
 
 export default function LatestArticles() {
@@ -47,9 +48,7 @@ export default function LatestArticles() {
                         </li>
                       </ul>
                       <h2 className="h1">
-                        <a className="post-title" href="article.html">
-                          {article.title}
-                        </a>
+                      <Link href={`/articles/${article.id}`}>{article.title}</Link>
                       </h2>
                       <div className='small-text-description' dangerouslySetInnerHTML={{ __html: article.mini_description?.substring(0, 250) + "..."}}></div>
                       <div className="content">
@@ -61,7 +60,7 @@ export default function LatestArticles() {
               ) : (
                 <div key={article.id} className="col-md-6 mb-4">
                   <article className="card article-card article-card-sm h-100">
-                  <a href="article.html">
+                  <Link href={`/articles/${article.id}`}>
                     <div className="card-image">
                       <div className="post-info">
                         {" "}
@@ -70,7 +69,7 @@ export default function LatestArticles() {
                       </div>
                       {article.images[0] && <img loading="lazy" src={API_URL + article.images[0].url} alt="Image" decoding="async" className="w-100 img-card-list" />}
                     </div>
-                  </a>
+                  </Link>
                   <div className="card-body px-0 pb-0">
                     <ul className="post-meta mb-2">
                       <li>
@@ -79,9 +78,7 @@ export default function LatestArticles() {
                       </li>
                     </ul>
                     <h2>
-                      <a className="post-title" href="article.html">
-                        {article.title}
-                      </a>
+                      <Link href={`/articles/${article.id}`}>{article.title}</Link>
                     </h2>
                     <div className='small-text-description' dangerouslySetInnerHTML={{ __html: article.mini_description?.substring(0, 70) + "..."}}></div>
                     <div className="content">

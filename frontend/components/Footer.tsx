@@ -11,7 +11,7 @@ export default function Footer() {
                 loading="prelaod"
                 decoding="async"
                 className="img-fluid"
-                src="images/logo-white.png"
+                src="/images/logo-white.png"
                 alt="Reporter Hugo"
               />
             </a>
