@@ -31,7 +31,7 @@ export default function LatestArticles() {
               index === 0 ? (
                 <div key={article.id} className="col-12 mb-4">
                   <article className="card article-card">
-                    <a href="article.html">
+                  <Link href={`/articles/${article.id}`}>
                       <div className="card-image">
                         <div className="post-info">
                           <span className="text-uppercase">04 Jun 2021</span>
@@ -39,7 +39,7 @@ export default function LatestArticles() {
                         </div>
                         {article.images[0] && <img loading="lazy" src={API_URL + article.images[0].url} alt="Image" decoding="async" className="w-100 h-100" />}
                       </div>
-                    </a>
+                  </Link>
                     <div className="card-body px-0 pb-1">
                       <ul className="post-meta mb-2">
                         <li>
