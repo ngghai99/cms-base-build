@@ -40,7 +40,7 @@
           </div>
             <div class="mb-3" data-controller="image" id="Img">
               <%= f.label :images, class: "form-label"  %>
-              <%= f.file_field :images, class: "form-control", id: "img-uploader", accept: "image/png, image/jpeg, image/jpg", "data-image-target": "input" %>
+              <%= f.file_field :images, class: "form-control", multiple: true, id: "img-uploader", accept: "image/png, image/jpeg, image/jpg", "data-image-target": "input" %>
             </div>
             <%= image_tag f.object.images.first.url, style: "max-height: 256px", id: 'img-show-detail'  if f.object.images.first.present? %>
             <div id="image-preview-container"></div>
