@@ -117,7 +117,7 @@ h6, .h6 {
 }
 
 body {
-  background-color: #fff;
+  background-color: #fbf5f8a3;
   overflow-x: hidden;
 }
 
@@ -523,6 +523,7 @@ a:hover {
 .card {
   border: 0;
   position: relative;
+  border-radius: 10px;
 }
 .card-meta {
   padding-left: 0;
@@ -832,7 +833,7 @@ a.post-title-sm:hover {
 .widget-body {
   padding: 30px;
   background-color: #fff;
-  border-radius: 0;
+  border-radius: 10px;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
 }
 @media (max-width: 1200px) {
@@ -893,18 +894,18 @@ a.post-title-sm:hover {
 }
 
 .author-thumb-sm {
-  height: 150px;
+  height: 265px;
   -o-object-fit: cover;
      object-fit: cover;
 }
 @media (max-width: 991px) {
   .author-thumb-sm {
-    height: 250px;
+    height: 225px;
   }
 }
 @media (max-width: 767px) {
   .author-thumb-sm {
-    height: 200px;
+    height: 235px;
   }
 }
 
