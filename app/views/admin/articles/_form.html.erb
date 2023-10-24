@@ -65,12 +65,10 @@
   max-height: 200px;
 }
 </style>
-<%# width: 75px ;height: 100px; %>
 <script type="text/javascript">
   const inputElement = document.getElementById('img-uploader');
   const previewContainer = document.getElementById('image-preview-container');
   const imgDetail = document.getElementById('img-show-detail');
-  console.log(imgDetail)
 
   inputElement.addEventListener('change', function (event) {
     const fileList = event.target.files;
@@ -83,7 +81,6 @@
 
     for (let i = 0; i < fileList.length; i++) {
       const file = fileList[i];
-
       if (file.type.startsWith('image/')) {
         const reader = new FileReader();
         reader.onload = function (event) {
@@ -93,7 +90,6 @@
           imgElement.style.maxHeight = '256px';
           previewContainer.appendChild(imgElement);
         };
-
         reader.readAsDataURL(file);
       }
     }
