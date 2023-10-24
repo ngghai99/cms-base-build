@@ -67,6 +67,7 @@
     </div>
   </div>
 <% end %>
+
 <script>
   let isEventBound = false;
   document.addEventListener('DOMContentLoaded', function () {
@@ -80,15 +81,12 @@
         for (let i = 0; i < fileList.length; i++) {
           const file = fileList[i];
 
-          // Kiểm tra nếu là tệp hình ảnh
           if (file.type.startsWith('image/')) {
             const reader = new FileReader();
             reader.onload = function (event) {
-              // Tạo một phần tử img để hiển thị tấm hình
               const imgElement = document.createElement('img');
               imgElement.setAttribute('src', event.target.result);
               imgElement.classList.add('preview-image');
-              // Thêm tấm hình vào preview container
               previewContainer.appendChild(imgElement);
             };
             reader.readAsDataURL(file);
