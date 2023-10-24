@@ -40,7 +40,7 @@
           </div>
             <div class="mb-3" data-controller="image" id="Img">
               <%= f.label :images, class: "form-label"  %>
-              <%= f.file_field :images, multiple: true, class: "form-control", accept: "image/png, image/jpeg, image/jpg", "data-image-target": "input" %>
+              <%= f.file_field :images, multiple: true, class: "form-control", id: "img-uploader", accept: "image/png, image/jpeg, image/jpg", "data-image-target": "input" %>
             </div>
             <%= image_tag f.object.images.first.url, style: "max-height: 256px", id: 'img-show-detail'  if f.object.images.first.present? %>
             <div id="image-preview-container"></div>
@@ -66,37 +66,37 @@
 }
 </style>
 <%# width: 75px ;height: 100px; %>
-<script>
-  let isEventBound = false;
-  document.addEventListener('DOMContentLoaded', function () {
-    if (!isEventBound) {
-      const imgDetail = document.getElementById('img-show-detail');
-      const inputElement = document.querySelector('[data-image-target="input"]');
-      const previewContainer = document.getElementById('image-preview-container');
-      inputElement.addEventListener('change', function (event) {
-        const fileList = event.target.files;
+<script type="text/javascript">
+  const inputElement = document.getElementById('img-uploader');
+  const previewContainer = document.getElementById('image-preview-container');
+  const imgDetail = document.getElementById('img-show-detail');
+  console.log(imgDetail)
 
-        for (let i = 0; i < fileList.length; i++) {
-          const file = fileList[i];
+  inputElement.addEventListener('change', function (event) {
+    const fileList = event.target.files;
+    if (imgDetail !== null) {
+      imgDetail.remove()
+    }
+    while (previewContainer.firstChild) {
+      previewContainer.removeChild(previewContainer.firstChild);
+    }
 
-          if (file.type.startsWith('image/')) {
-            const reader = new FileReader();
-            reader.onload = function (event) {
-              const imgElement = document.createElement('img');
-              imgElement.setAttribute('src', event.target.result);
-              imgElement.classList.add('preview-image');
-              previewContainer.appendChild(imgElement);
-              imgElement.style.maxHeight = '256px';
-              imgDetail.remove()
-            };
-            if(previewContainer.firstChild) {
-              previewContainer.removeChild(previewContainer.firstChild);
-            }
-            reader.readAsDataURL(file);
-          }
-        }
-      });
-      isEventBound = true;
+    for (let i = 0; i < fileList.length; i++) {
+      const file = fileList[i];
+
+      if (file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = function (event) {
+          const imgElement = document.createElement('img');
+          imgElement.setAttribute('src', event.target.result);
+          imgElement.classList.add('preview-image');
+          imgElement.style.maxHeight = '256px';
+          previewContainer.appendChild(imgElement);
+        };
+
+        reader.readAsDataURL(file);
+      }
     }
   });
 </script>
+
