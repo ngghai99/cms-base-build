@@ -39,11 +39,11 @@
           <div class="col-md-6">
             <div class="form-group">
               <%= f.label :status %><br>
-              <%= f.select :status, [[t('status.active'), :active], [t('status.disable'), :disable]], {}, { class: "form-control" }   %>
+              <%= f.select :status, options_for_select([['Active', :active], ['Disable', :disable]], f.object.params.status), {}, { class: "form-control" } %>
             </div>
             <div class="form-group">
               <%= f.label :type %><br>
-              <%= f.select :type, [[t('users.Admin'), 'Admin'], [t('users.Client'), 'Client']], {}, { class: "form-control" }   %>
+              <%= f.select :type, options_for_select([['Admin', 'Admin'], ['Client', 'Client']], f.object.params.type), {}, {class: "form-control"} %>
             </div>
             <div class="form-group">
               <%= f.label :gender %>

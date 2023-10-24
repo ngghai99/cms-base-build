@@ -3,8 +3,8 @@ class User::UpdateForm
   attr_accessor :name, :password, :password_confirmation, :phone, :address, :birthday, :status,
                 :gender, :email, :district_name, :ward_name, :type, :image, :params, :user
 
-  def initialize(params={})
-    @user = User.find_by(id: params[:id])
+  def initialize(params={}, user=nil)
+    @user = user
     @params = params
 
     return unless params[:user].present?
@@ -21,12 +21,8 @@ class User::UpdateForm
 
   private
 
-  def user_params
-    params.require(:user_update_form).permit(:name, :password, :password_confirmation, :phone, :address, :birthday, :status, :gender, :email, :district_name, :ward_name, :type, :image)
+  def update_user
+    user.update!(params)
   end
-
-    def update_user
-      user.update!(user_params)
-    end
 end
 
