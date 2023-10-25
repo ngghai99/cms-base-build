@@ -1,10 +1,12 @@
 class Api::V1::ArticlesController < ApplicationController
+  include Pagination
   skip_before_action :verify_authenticity_token
   skip_before_action :authenticate_user!, :raise => false
 
   def index
-    articles = Article.all
-    render json: articles
+    articles = Article.all.page(params[:page]).per(5)
+    result = resources_with_pagination(articles)
+    render json: result
   end
 
   def show

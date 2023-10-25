@@ -12,6 +12,7 @@ module App
     config.load_defaults 7.0
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.importmap.enabled = true
+    config.autoload_paths += Dir["#{config.root}/app/controllers/api/v1/concerns"]
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

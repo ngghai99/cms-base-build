@@ -11,7 +11,7 @@ export default function LatestArticles() {
     async function fetchData() {
       try {
         const response = await api.get('/articles');
-        setArticles(response.data);
+        setArticles(response.data.resources);
       } catch (error) {
         console.error(error);
       }
@@ -48,7 +48,7 @@ export default function LatestArticles() {
                         </li>
                       </ul>
                       <h2 className="h1">
-                      <Link href={`/articles/${article.id}`}>{article.title}</Link>
+                      <Link href={`/articles/${article.id}`} className='post-title post-title-sm'>{article.title}</Link>
                       </h2>
                       <div className='small-text-description' dangerouslySetInnerHTML={{ __html: article.mini_description?.substring(0, 250) + "..."}}></div>
                       <div className="content">
@@ -78,7 +78,7 @@ export default function LatestArticles() {
                       </li>
                     </ul>
                     <h2>
-                      <Link href={`/articles/${article.id}`}>{article.title}</Link>
+                      <Link href={`/articles/${article.id}`} className='post-title post-title-sm'>{article.title}</Link>
                     </h2>
                     <div className='small-text-description' dangerouslySetInnerHTML={{ __html: article.mini_description?.substring(0, 70) + "..."}}></div>
                     <div className="content">
