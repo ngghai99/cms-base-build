@@ -1,25 +1,18 @@
-FROM ruby:3.2
+FROM ruby:3.2.2
 
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+RUN echo "deb http://archive.debian.org/debian stretch main" > /etc/apt/sources.list
+RUN apt-get update && apt-get install -y postgresql-client
+RUN apt-get update && apt-get install -y libpq-dev nano
+RUN apt-get -y install nodejs
+RUN apt-get install -y redis-server
+RUN mkdir /spa-clone
+WORKDIR /spa-clone
 
-RUN mkdir /app
-WORKDIR /app
+CMD service redis-server start && mailhog
 
-COPY Gemfile /app/Gemfile
-# COPY Gemfile.lock /app/Gemfile.lock
+COPY Gemfile /spa-clone/Gemfile
+COPY Gemfile.lock /spa-clone/Gemfile.lock
 
 RUN bundle install
-COPY . /app
 
-## importmaps (after these are commited there's no need to have them in the build)
-# RUN ./bin/importmap pin bootstrap@4 --download
-# RUN ./bin/importmap pin admin-lte --download
-# RUN ./bin/importmap pin @fortawesome/fontawesome-free
-## 
-COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
-EXPOSE 3000
-
-# Start the main process.
-CMD ["rails", "server", "-b", "0.0.0.0"]
+COPY . /spa-clone
