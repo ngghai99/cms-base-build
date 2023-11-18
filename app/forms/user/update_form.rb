@@ -5,6 +5,7 @@ class User::UpdateForm
 
   def initialize(params={}, user=nil)
     @user = user
+    params.delete(:images) if params[:images].present? && params[:images] == [""]
     @params = params
 
     return unless params[:user].present?

@@ -2,8 +2,8 @@
 import React from 'react'
 import { Footer, Nav, ArticleDetail, WidgetBlocks } from '@/components'
 
-export default function ArticleDetails({params}: {params: { id: string }}) {
-  const id = params.id
+export default function ArticleDetails({params}: {params: { id: number }}) {
+  const id: number = params.id
   return (
     <>
       <Nav />

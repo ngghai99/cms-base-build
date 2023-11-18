@@ -7,7 +7,7 @@ export default function Nav() {
         <nav className="navbar navbar-expand-lg navbar-light px-0">
           <a className="navbar-brand order-1 py-0" href="/">
             <img
-              loading="prelaod"
+              loading="eager"
               decoding="async"
               className="img-fluid"
               src="/images/logo.png"

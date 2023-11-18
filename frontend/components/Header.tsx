@@ -10,12 +10,12 @@ export default function Header() {
   return (
     <head>
       <meta charSet="utf-8" />
-      <title>{meta.title}</title>
+      <title>{meta.title as string}</title>
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=5"
       />
-      <meta name="description" content={meta.description} />
+      <meta name="description" content={meta.description as string} />
       <meta name="author" content="Themefisher" />
       <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
       <link rel="icon" href="/images/favicon.png" type="image/x-icon" />

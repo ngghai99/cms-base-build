@@ -8,7 +8,7 @@ export default function Footer() {
           <div className="col-lg-10 mx-auto text-center">
             <a className="d-inline-block mb-4 pb-2" href="index.html">
               <img
-                loading="prelaod"
+                loading="eager"
                 decoding="async"
                 className="img-fluid"
                 src="/images/logo-white.png"

@@ -117,7 +117,7 @@ h6, .h6 {
 }
 
 body {
-  background-color: #fbf5f8a3;
+  background-color: #f6f7f9a3;
   overflow-x: hidden;
 }
 
@@ -834,8 +834,8 @@ a.post-title-sm:hover {
   padding: 30px;
   background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
 }
+
 @media (max-width: 1200px) {
   .widget-body-sm {
     padding: 20px;
@@ -951,4 +951,12 @@ footer .section {
 
 .img-card-list {
   max-height: 250px;
+}
+
+.image_resized{
+  max-width: 100%;
+  max-height: 100%; /* hoặc giá trị cụ thể, ví dụ: max-height: 300px; */
+  width: auto;
+  height: auto;
+  overflow: hidden;
 }

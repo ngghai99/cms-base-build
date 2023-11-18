@@ -2,11 +2,21 @@
 import React, { useEffect, useState } from 'react';
 import api from '../utils/api';
 
-export default function ArticleDetail({ArticleId}) {
-  const [article, setArticle] = useState([]);
+export default function ArticleDetail({ ArticleId }: { ArticleId: number }) {
+  const [article, setArticle] = useState<Article | null>(null);
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString.created_at)
+  interface Article {
+    title: string;
+    created_at: string
+    content: string
+  }
+
+
+  const formatDate = (dateString:string | undefined ) => {
+    if (!dateString) {
+      return '';
+    }
+    const date = new Date(dateString)
 
     const day = date.toLocaleString('en-us', { weekday: 'long' });
     const month = date.toLocaleString('en-us', { month: 'short' });
@@ -28,17 +38,20 @@ export default function ArticleDetail({ArticleId}) {
     fetchData();
   }, []);
 
+  console.log(article)
   return (
     <>
       <div className="col-lg-8 mb-5 mb-lg-0">
-        <h1>
-          {article.title}
-        </h1>
-        <p>
-          { formatDate(article) }
-        </p>
-        <div className='small-text-description' dangerouslySetInnerHTML={{ __html: article.content }}>
-        </div>
+        {article && (
+            <>
+              <h1>{article.title}</h1>
+              <p>{formatDate(article.created_at)}</p>
+              <div
+                className="small-text-description"
+                dangerouslySetInnerHTML={{ __html: article.content }}
+              ></div>
+            </>
+          )}
       </div>
     </>
   )

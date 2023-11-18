@@ -4,8 +4,17 @@ import Link from "next/link"
 import api from '../utils/api';
 
 export default function LatestArticles() {
-  const [articles, setArticles] = useState([]);
+  const [articles, setArticles] = useState<Article[] | null>(null);
   const API_URL = process.env.API_URL
+
+  interface Article {
+    id: number;
+    title: string;
+    created_at: string;
+    content: string;
+    images: { url: string }[];
+    mini_description?: string;
+  }
 
   useEffect(() => {
     async function fetchData() {
@@ -27,7 +36,7 @@ export default function LatestArticles() {
       <div className="col-lg-8 mb-5 mb-lg-0">
         <div className="row">
           {
-            articles.map((article, index) =>
+            articles?.map((article, index) =>
               index === 0 ? (
                 <div key={article.id} className="col-12 mb-4">
                   <article className="card article-card">
