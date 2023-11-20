@@ -37,11 +37,11 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def create_article_params
-    params.require(:article_create_form).permit(:title, :content, :image, :status, :description, :article_catalogue_id, :mini_description, images: [])
+    params.require(:article_create_form).permit(:title, :content, :image, :status, :description, :article_catalogue_id, :mini_description, :image)
   end
 
   def update_article_params
-    params.require(:article).permit(:title, :content, :image, :status, :description, :article_catalogue_id, :mini_description, images: [])
+    params.require(:article).permit(:title, :content, :image, :status, :description, :article_catalogue_id, :mini_description, :image)
   end
 
   def handle_form_save(success_message)

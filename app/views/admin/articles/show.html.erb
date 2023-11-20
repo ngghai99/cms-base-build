@@ -1,3 +1,7 @@
+<div class="group-btn">
+  <%= link_to t('helpers.action.edit'), edit_admin_article_path(@admin_article), class: "btn btn-warning btn-sm" %>
+  <%= link_to t('views.button.back'), admin_articles_path, class: "btn btn-primary btn-sm" %>
+</div>
 <div class="admin main content">
   <%= render '/shared/notice' %>
   <div class="card box-solid">
@@ -13,20 +17,11 @@
             <%= @admin_article.decorate.decorate_status %>
           </p>
         </div>
-        <div class="col-md-6">
-          <p>
-            <% if  @admin_article.image.present? %>
-              <%= image_tag( @admin_article.image, size: '200x200') %>
-            <% end %>
-          </p>
-        </div>
         <div class="col-md-12">
           <strong><%= I18n.t('.articles.title_background') %>:</strong>
-          <% if @admin_article.images.present? %>
-            <% @admin_article.images.each do |image| %>
-              <%= image_tag(image.url(:thumb)) %>
+            <% if @admin_article.image.present? %>
+              <%= image_tag( @admin_article.image_url.to_s, size: '200x200') %>
             <% end %>
-          <% end %>
         </div>
         <div class="col-md-12" style="pointer-events: none;">
           <strong><%= t('articles.content') %>:</strong>
@@ -35,8 +30,6 @@
           </div>
         </div>
       </div>
-      <%= link_to t('helpers.action.edit'), edit_admin_article_path(@admin_article), class: "btn btn-warning btn-sm" %>
-      <%= link_to t('views.button.back'), admin_articles_path, class: "btn btn-primary btn-sm" %>
     </div>
   </div>
 </div>

@@ -1,4 +1,7 @@
 <%= form_for [:admin, @article_form], url: @admin_article.present? ? admin_article_path(@admin_article) : admin_articles_path, method: @admin_article.present? ? :put : :post, data: { turbo: false } do |f| %>
+  <div class="group-btn">
+    <%= f.submit "Save" , class: "btn btn-sm btn-success" %>
+  </div>
   <div class="card card-primary card-tabs box-solid">
     <div class="card-header p-0 pt-1" style="background-color: #6c757d;">
     </div>
@@ -7,53 +10,57 @@
         <div class="tab-pane fade show active" id="tab_1">
           <%= render partial: 'shared/error_messages', locals: { object: @article_form } %>
           <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <%= f.label :title %><br>
-                <%= f.text_field :title, class: "form-control" %>
+            <div class="col-md-10">
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <%= f.label :title %><br>
+                    <%= f.text_field :title, class: "form-control" %>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <%= f.label :slug %><br>
+                    <%= f.text_field :slug, class: "form-control" %>
+                  </div>
+                </div><br>
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <%= f.label :order %>
+                    <%= f.number_field :order, class: "form-control" %>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <%= f.label :status %><br>
+                    <%= f.select :status, [[t('status.active'), 'active'], [t('status.disable'), 'disable']], {}, { class: "form-control" }   %>
+                  </div>
+                </div>
+                <div class="col-md-10">
+                  <div class="form-group">
+                    <%= f.label :mini_description %><br>
+                    <%= f.text_field :mini_description, class: 'form-control' %>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <%= f.label :slug %><br>
-                <%= f.text_field :slug, class: "form-control" %>
-              </div>
-            </div><br>
-            <div class="col-md-6">
-              <div class="form-group">
-                <%= f.label :order %>
-                <%= f.number_field :order, class: "form-control" %>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <%= f.label :status %><br>
-                <%= f.select :status, [[t('status.active'), 'active'], [t('status.disable'), 'disable']], {}, { class: "form-control" }   %>
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="form-group">
-                <%= f.label :mini_description %><br>
-                <%= f.text_field :mini_description, class: 'form-control' %>
+            <div class="col-md-2">
+              <div class="mb-3" data-controller="image" id="Img">
+                <label>Select a background article:</label><br>
+                <label id="image-label" class="image-hover" for="article_image">
+                  <%= image_tag "#{f.object.image_url.to_s.present? ? f.object.image_url.to_s :  default.jpeg}", id: "thumbnail-img", size: "200x200" %>
+                </label>
+                <%= f.file_field :image, class: "form-control display-none" %>
               </div>
             </div>
           </div>
-            <div class="mb-3" data-controller="image" id="Img">
-              <%= f.label :images, class: "form-label"  %>
-              <%= f.file_field :images, class: "form-control", multiple: true, id: "img-uploader", accept: "image/png, image/jpeg, image/jpg", "data-image-target": "input" %>
+          <div class="col-md-12 pd-0">
+            <div class="form-group">
+              <%= f.label :content %><br>
+              <%= f.ckeditor :content, class: 'form-control' %>
             </div>
-            <%= image_tag f.object.images.first.url, style: "max-height: 256px", id: 'img-show-detail' if f.object.images&.first.present? %>
-            <div id="image-preview-container"></div>
-            <div class="col-md-12">
-              <div class="form-group">
-                <%= f.label :content %><br>
-                <%= f.ckeditor :content, class: 'form-control' %>
-              </div>
-            </div>
+          </div>
           <br>
-          <div class="actions">
-            <%= f.submit "Save" , class: "btn btn-sm btn-success" %>
-          </div>
         </div>
       </div>
     </div>
@@ -65,34 +72,31 @@
   max-height: 200px;
 }
 </style>
+
 <script type="text/javascript">
-  const inputElement = document.getElementById('img-uploader');
-  const previewContainer = document.getElementById('image-preview-container');
-  const imgDetail = document.getElementById('img-show-detail');
+document.addEventListener('DOMContentLoaded', function() {
+  var articleImages = document.getElementById('article_image');
+  var thumbnailImg = document.getElementById('thumbnail-img');
 
-  inputElement.addEventListener('change', function (event) {
-    const fileList = event.target.files;
-    if (imgDetail !== null) {
-      imgDetail.remove()
-    }
-    while (previewContainer.firstChild) {
-      previewContainer.removeChild(previewContainer.firstChild);
-    }
+  handlePreview(articleImages, thumbnailImg);
+});
 
-    for (let i = 0; i < fileList.length; i++) {
-      const file = fileList[i];
-      if (file.type.startsWith('image/')) {
-        const reader = new FileReader();
-        reader.onload = function (event) {
-          const imgElement = document.createElement('img');
-          imgElement.setAttribute('src', event.target.result);
-          imgElement.classList.add('preview-image');
-          imgElement.style.maxHeight = '256px';
-          previewContainer.appendChild(imgElement);
-        };
-        reader.readAsDataURL(file);
-      }
+function readURL(input, image) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      image.src = e.target.result;
     }
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+function handlePreview(inputTag, image) {
+  inputTag.addEventListener('change', function(e) {
+    var file = e.target.files[0];
+    readURL(e.target, image);
   });
+}
+
 </script>
 

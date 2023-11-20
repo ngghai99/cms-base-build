@@ -8,11 +8,11 @@ export default function LatestArticles() {
   const API_URL = process.env.API_URL
 
   interface Article {
+    image: any;
     id: number;
     title: string;
     created_at: string;
     content: string;
-    images: { url: string }[];
     mini_description?: string;
   }
 
@@ -46,7 +46,7 @@ export default function LatestArticles() {
                           <span className="text-uppercase">04 Jun 2021</span>
                           <span className="text-uppercase">3 minutes read</span>
                         </div>
-                        {article.images[0] && <img loading="lazy" src={API_URL + article.images[0].url} alt="Image" decoding="async" className="w-100 h-100" />}
+                        {article.image && <img loading="lazy" src={API_URL + article.image.url} alt="Image" decoding="async" className="w-100 h-100" />}
                       </div>
                   </Link>
                     <div className="card-body px-0 pb-1">
@@ -76,7 +76,7 @@ export default function LatestArticles() {
                         <span className="text-uppercase">03 Jun 2021</span>
                         <span className="text-uppercase">2 minutes read</span>
                       </div>
-                      {article.images[0] && <img loading="lazy" src={API_URL + article.images[0].url} alt="Image" decoding="async" className="w-100 img-card-list" />}
+                      {article.image && <img loading="lazy" src={API_URL + article.image.url} alt="Image" decoding="async" className="w-100 img-card-list" />}
                     </div>
                   </Link>
                   <div className="card-body px-0 pb-0">

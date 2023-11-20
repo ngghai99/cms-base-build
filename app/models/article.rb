@@ -1,5 +1,5 @@
 class Article < ApplicationRecord
-  mount_uploaders :images, ImageUploader
+  mount_uploader :image, ImageUploader
 
   validates :title, presence: true
   enum status: [:active, :archived]

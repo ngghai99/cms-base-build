@@ -30,8 +30,8 @@
                 <%= f.text_field :email, value: @admin_client&.email, required: true , class: "form-control" %>
               </div>
               <div class="form-group">
-                <img src='<%= f.object.params.image if f.object.params.image.present?%>' id="blah" alt="your image" onError="this.onerror=null;this.src='/images/no_image.png'" value="<%= f.object.params.image if f.object.params.image.present? %>" width="50" height="50" />
-                <%= image_tag f.object.image.url, style: "max-height: 256px", id: 'img-show-detail'  if f.object.image.present? %>
+                <img src='<%= f.object&.params[:images] if f.object&.params[:images]&.present? %>' id="blah" alt="your image" onError="this.onerror=null;this.src='/images/no_image.png'" value="<%= f.object&.params[:images]&.first if f.object&.params[:images]&.present? %>" width="50" height="50" />
+                <%= image_tag f.object[:images].first.url, style: "max-height: 256px", id: 'img-show-detail'  if f.object.image.present? %>
                 <div stype='margin-top: 10px;'>
                   <%= f.file_field :image, onchange: "document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])"%>
                 </div>
