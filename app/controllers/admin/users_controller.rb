@@ -43,7 +43,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def set_admin_user
-    @admin_client = Client.find(params[:id])
+    @admin_client = User.find(params[:id])
   end
 
   def permission_required

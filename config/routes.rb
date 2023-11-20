@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     resources :dashboard
     resources :articles
     resources :users
-
   end
 
   namespace :api do
@@ -22,8 +21,6 @@ Rails.application.routes.draw do
 
   namespace :client do
     resources :articles
-    resources :users
-
   end
 
   root 'site#index'
