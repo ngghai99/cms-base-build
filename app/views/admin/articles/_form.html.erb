@@ -46,11 +46,19 @@
             </div>
             <div class="col-md-2">
               <div class="mb-3" data-controller="image" id="Img">
-                <label>Select a background article:</label><br>
-                <label id="image-label" class="image-hover" for="article_image">
-                  <%= image_tag "#{f.object.image_url.to_s.present? ? f.object.image_url.to_s :  default.jpeg}", id: "thumbnail-img", size: "200x200" %>
-                </label>
-                <%= f.file_field :image, class: "form-control display-none" %>
+                <% if @article_form.present? %>
+                  <label>Select a background article:</label><br>
+                  <label id="image-label" class="image-hover" for="article_image">
+                    <%= image_tag "#{f.object.image_url.to_s.present? ? f.object.image_url.to_s : 'default.jpeg'}", id: "thumbnail-img", size: "200x200" %>
+                  </label>
+                  <%= f.file_field :image, class: "form-control display-none" %>
+                <% else %>
+                  <label>Select a background article:</label><br>
+                  <label id="image-label" class="image-hover" for="article_image">
+                    <%= image_tag "#{f.object.image_url.to_s.present? ? f.object.image_url.to_s : 'default.jpeg'}", id: "thumbnail-img", size: "200x200" %>
+                  </label>
+                  <%= f.file_field :image, class: "form-control display-none" %>
+                <% end %>
               </div>
             </div>
           </div>
@@ -74,29 +82,28 @@
 </style>
 
 <script type="text/javascript">
-document.addEventListener('DOMContentLoaded', function() {
-  var articleImages = document.getElementById('article_image');
-  var thumbnailImg = document.getElementById('thumbnail-img');
+  document.addEventListener('DOMContentLoaded', function() {
+    var articleImages = document.getElementById('article_image');
+    var thumbnailImg = document.getElementById('thumbnail-img');
 
-  handlePreview(articleImages, thumbnailImg);
-});
-
-function readURL(input, image) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-    reader.onload = function(e) {
-      image.src = e.target.result;
-    }
-    reader.readAsDataURL(input.files[0]);
-  }
-}
-
-function handlePreview(inputTag, image) {
-  inputTag.addEventListener('change', function(e) {
-    var file = e.target.files[0];
-    readURL(e.target, image);
+    handlePreview(articleImages, thumbnailImg);
   });
-}
 
+  function readURL(input, image) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        image.src = e.target.result;
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  function handlePreview(inputTag, image) {
+    inputTag.addEventListener('change', function(e) {
+      var file = e.target.files[0];
+      readURL(e.target, image);
+    });
+  }
 </script>
 

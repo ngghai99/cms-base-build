@@ -14,16 +14,16 @@ class Admin::UsersController < ApplicationController
   end
 
   def create
-    @client_form = User::CreateForm.new(params)
+    @client_form = User::CreateForm.new(create_user_params)
     handle_form_save('users.save_article_successfully')
   end
 
   def edit
-    @client_form = User::UpdateForm.new(@admin_client)
+    @client_form = User::UpdateForm.new(client: @admin_client).client
   end
 
   def update
-    @client_form = User::UpdateForm.new(update_user_params, set_admin_user)
+    @client_form = User::UpdateForm.new(params: update_user_params, client: @admin_client)
     handle_form_save('users.update_article_successfully')
   end
 
@@ -35,7 +35,11 @@ class Admin::UsersController < ApplicationController
   private
 
   def update_user_params
-    params.require(:user_update_form).permit(:name, :password, :password_confirmation, :phone, :address, :birthday, :status, :gender, :email, :district_name, :ward_name, :type, :image)
+    params.require(:client).permit(:name, :password, :password_confirmation, :phone, :address, :birthday, :status, :gender, :email, :district_name, :ward_name, :type, :image)
+  end
+
+  def create_user_params
+    params.require(:user_create_form).permit(:name, :password, :password_confirmation, :phone, :address, :birthday, :status, :gender, :email, :district_name, :ward_name, :type, :image)
   end
 
   def set_admin_user

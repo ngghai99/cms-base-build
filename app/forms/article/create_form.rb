@@ -1,6 +1,6 @@
 class Article::CreateForm
   include ActiveModel::Model
-  attr_accessor :title, :content, :images, :status, :slug, :order, :article_catalogue_id, :params, :mini_description
+  attr_accessor :title, :content, :images, :status, :slug, :order, :article_catalogue_id, :params, :mini_description, :image_url
 
   def initialize(params={})
     @params = params

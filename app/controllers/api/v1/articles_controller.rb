@@ -4,7 +4,7 @@ class Api::V1::ArticlesController < ApplicationController
   skip_before_action :authenticate_user!, :raise => false
 
   def index
-    articles = Article.all.page(params[:page]).per(5)
+    articles = Article.all.order(created_at: :desc).page(params[:page]).per(5)
     result = resources_with_pagination(articles)
     render json: result
   end

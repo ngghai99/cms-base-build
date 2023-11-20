@@ -19,9 +19,9 @@
         </div>
         <div class="col-md-12">
           <strong><%= I18n.t('.articles.title_background') %>:</strong>
-            <% if @admin_article.image.present? %>
-              <%= image_tag( @admin_article.image_url.to_s, size: '200x200') %>
-            <% end %>
+          <% if @admin_article.image.present? %>
+            <%= image_tag( @admin_article.image_url.to_s, size: '200x200') %>
+          <% end %>
         </div>
         <div class="col-md-12" style="pointer-events: none;">
           <strong><%= t('articles.content') %>:</strong>

@@ -1,4 +1,7 @@
 <%= form_for [:admin, @client_form], url: @admin_client.present? ? admin_user_path(@admin_client) : admin_users_path, method: @admin_client.present? ? :put : :post, data: { turbo: false } do |f| %>
+  <div class="group-btn">
+    <%= f.submit "Save" , class: "btn btn-sm btn-success" %>
+  </div>
   <div class="card card-primary card-tabs box-solid">
     <div class="card-header p-0 pt-1" style="background-color: #6c757d;"></div>
     <div class="card-body">
@@ -30,21 +33,30 @@
                 <%= f.text_field :email, value: @admin_client&.email, required: true , class: "form-control" %>
               </div>
               <div class="form-group">
-                <img src='<%= f.object&.params[:images] if f.object&.params[:images]&.present? %>' id="blah" alt="your image" onError="this.onerror=null;this.src='/images/no_image.png'" value="<%= f.object&.params[:images]&.first if f.object&.params[:images]&.present? %>" width="50" height="50" />
-                <%= image_tag f.object[:images].first.url, style: "max-height: 256px", id: 'img-show-detail'  if f.object.image.present? %>
-                <div stype='margin-top: 10px;'>
-                  <%= f.file_field :image, onchange: "document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])"%>
+                <div class="mb-3" data-controller="image" id="Img">
+                  <label>Select a background user:</label><br>
+                  <% if @admin_client.present? %>
+                    <label id="image-label" class="image-hover" for="client_image">
+                      <%= image_tag "#{f.object.image_url.to_s.present? ? f.object.image_url.to_s : 'default.jpeg'}", id: "thumbnail-img", size: "200x200" %>
+                    </label>
+                    <%= f.file_field :image, class: "form-control display-none" %>
+                  <% else %>
+                    <label id="image-label" class="image-hover" for="user_create_form_image">
+                      <%= image_tag "#{f.object.image_url.to_s.present? ? f.object.image_url.to_s : 'default.jpeg'}", id: "thumbnail-img", size: "200x200" %>
+                    </label>
+                    <%= f.file_field :image, class: "form-control display-none" %>
+                  <% end %>
                 </div>
               </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
               <%= f.label :status %><br>
-              <%= f.select :status, options_for_select([['Active', :active], ['Disable', :disable]], f.object.params.status), {}, { class: "form-control" } %>
+              <%= f.select :status, options_for_select([['Active', :active], ['Disable', :disable]], f.object.present? ? f.object.status : :active ), {}, { class: "form-control" } %>
             </div>
             <div class="form-group">
               <%= f.label :type %><br>
-              <%= f.select :type, options_for_select([['Admin', 'Admin'], ['Client', 'Client']], f.object.params.type), {}, {class: "form-control"} %>
+              <%= f.select :type, options_for_select([['Admin', 'Admin'], ['Client', 'Client']], f.object.type.present? ? f.object.type : 'Client' ), {}, {class: "form-control"} %>
             </div>
             <div class="form-group">
               <%= f.label :gender %>
@@ -61,40 +73,34 @@
           </div>
         </div>
         <br>
-        <div class="actions">
-          <%= f.submit "Save" , class: "btn btn-sm btn-success" %>
-        </div>
       </div>
     </div>
   </div>
 <% end %>
 
-<script>
-  let isEventBound = false;
-  document.addEventListener('DOMContentLoaded', function () {
-    if (!isEventBound) {
-      const inputElement = document.querySelector('[data-image-target="input"]');
-      const previewContainer = document.getElementById('image-preview-container');
-
-      inputElement.addEventListener('change', function (event) {
-        const fileList = event.target.files;
-
-        for (let i = 0; i < fileList.length; i++) {
-          const file = fileList[i];
-
-          if (file.type.startsWith('image/')) {
-            const reader = new FileReader();
-            reader.onload = function (event) {
-              const imgElement = document.createElement('img');
-              imgElement.setAttribute('src', event.target.result);
-              imgElement.classList.add('preview-image');
-              previewContainer.appendChild(imgElement);
-            };
-            reader.readAsDataURL(file);
-          }
-        }
-      });
-      isEventBound = true;
-    }
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    var articleImages = document.getElementById('user_create_form_image') || document.getElementById('client_image');
+    var thumbnailImg = document.getElementById('thumbnail-img');
+    console.log(articleImages)
+    console.log(thumbnailImg)
+    handlePreview(articleImages, thumbnailImg);
   });
+
+  function readURL(input, image) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        image.src = e.target.result;
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  function handlePreview(inputTag, image) {
+    inputTag.addEventListener('change', function(e) {
+      var file = e.target.files[0];
+      readURL(e.target, image);
+    });
+  }
 </script>

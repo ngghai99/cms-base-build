@@ -2,10 +2,11 @@ class Article::UpdateForm
   include ActiveModel::Model
   attr_accessor :title, :content, :images, :status, :slug, :order, :article_catalogue_id, :params, :article, :mini_description
 
-  def initialize(params={}, article_id='')
-    @article = Article.find_by(id: article_id)
+  def initialize(params={})
+    @article = params[:article] || Article.find_by(id: params[:id])
 
     @params = params
+
     return unless params[:article].present? && @article.present?
     super(params)
   end

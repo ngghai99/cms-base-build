@@ -17,11 +17,11 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def edit
-    @article_form = Article::UpdateForm.new(@admin_article).params
+    @article_form = Article::UpdateForm.new(article: @admin_article).article
   end
 
   def update
-    @article_form = Article::UpdateForm.new(update_article_params, params[:id])
+    @article_form = Article::UpdateForm.new(params: update_article_params, article: @admin_article)
     handle_form_save('articles.update_article_sucessfully')
   end
 
