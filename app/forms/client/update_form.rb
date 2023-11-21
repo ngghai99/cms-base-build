@@ -1,4 +1,4 @@
-class User::UpdateForm
+class Client::UpdateForm
   include ActiveModel::Model
   attr_accessor :name, :password, :password_confirmation, :phone, :address, :birthday, :status,
                 :gender, :email, :district_name, :ward_name, :type, :image, :params, :client, :image_url

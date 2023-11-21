@@ -15,7 +15,7 @@
         <% end %>
       </div>
       <div class="info">
-        <%= link_to current_user.name, admin_user_path(current_user), class: "d-block" %>
+        <%= link_to current_user.name, admin_client_path(current_user), class: "d-block" %>
       </div>
     </div>
 
@@ -46,10 +46,10 @@
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to admin_users_path, class: "nav-link" do %>
+          <%= link_to admin_clients_path, class: "nav-link" do %>
             <i class="nav-icon fas fa-th"></i>
             <p style="color: #c2c7d0;">
-              User
+              Client
               <span class="right badge badge-danger">New</span>
             </p>
           <% end %>

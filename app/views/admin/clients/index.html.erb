@@ -2,7 +2,7 @@
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        <%= link_to t('button.new', model: t('activerecord.models.user')), new_admin_user_path, class: "card-title btn btn-sm btn-success" %>
+        <%= link_to t('button.new', model: t('activerecord.models.user')), new_admin_client_path, class: "card-title btn btn-sm btn-success" %>
         <div class="card-tools">
           <div class="input-group input-group-sm" style="width: 150px;">
             <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -30,20 +30,20 @@
         <tbody>
           <% @admin_clients.each do |admin_user| %>
           <tr>
-            <td><%= link_to admin_user.name, admin_user_path(admin_user.id) if admin_user.name.present? %></td>
+            <td><%= link_to admin_user.name, admin_client_path(admin_user.id) if admin_user.name.present? %></td>
             <td><%= admin_user.email %></td>
             <td><%= admin_user.decorate.decorate_status %></td>
             <td><%= admin_user.is_admin? ? 'Admin' : 'Client' %></td>
             <td><%= admin_user.created_at.strftime('%d-%m-%Y') %></td>
             <% if current_user == admin_user || admin_user.is_client?  %>
               <td class="pull-right">
-              <%= link_to t('button.edit'), edit_admin_user_path(admin_user.id), class: "btn-xs btn btn-warning" %>
+              <%= link_to t('button.edit'), edit_admin_client_path(admin_user.id), class: "btn-xs btn btn-warning" %>
               </td>
             <% else %>
               <td></td>
             <% end %>
             <td class="width60">
-              <%= link_to 'Destroy', admin_user_path(admin_user.id), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "btn-xs btn btn-danger" %></td>
+              <%= link_to 'Destroy', admin_client_path(admin_user.id), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "btn-xs btn btn-danger" %></td>
             </td>
           </tr>
           <% end %>

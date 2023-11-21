@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :dashboard
     resources :articles
     resources :users
+    resources :clients
   end
 
   namespace :api do

@@ -1,4 +1,4 @@
-<%= form_for [:admin, @client_form], url: @admin_client.present? ? admin_user_path(@admin_client) : admin_users_path, method: @admin_client.present? ? :put : :post, data: { turbo: false } do |f| %>
+<%= form_for [:admin, @client_form], url: @admin_client.present? ? admin_client_path(@admin_client) : admin_clients_path, method: @admin_client.present? ? :put : :post, data: { turbo: false } do |f| %>
   <div class="group-btn">
     <%= f.submit "Save" , class: "btn btn-sm btn-success" %>
   </div>
@@ -56,7 +56,7 @@
             </div>
             <div class="form-group">
               <%= f.label :type %><br>
-              <%= f.select :type, options_for_select([['Admin', 'Admin'], ['Client', 'Client']], f.object.type.present? ? f.object.type : 'Client' ), {}, {class: "form-control"} %>
+              <%= f.select :type, options_for_select(client_type, f.object.type.present? ? f.object.type : 'Client' ), {}, {class: "form-control"} %>
             </div>
             <div class="form-group">
               <%= f.label :gender %>

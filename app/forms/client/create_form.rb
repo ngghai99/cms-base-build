@@ -1,12 +1,12 @@
-class User::CreateForm
+class Client::CreateForm
   include ActiveModel::Model
   attr_accessor :name, :password, :password_confirmation, :phone, :address, :birthday, :status,
-                :gender, :email, :district_name, :ward_name, :type, :image, :params, :image_url 
+                :gender, :email, :district_name, :ward_name, :type, :image, :params, :image_url
 
   def initialize(params={})
     @params = params
 
-    return unless params[:user_create_form].present?
+    return unless params[:client_create_form].present?
     super(params)
   end
 
@@ -21,6 +21,6 @@ class User::CreateForm
   private
 
   def create_user
-    User.create!(params)
+    Client.create!(params)
   end
 end
