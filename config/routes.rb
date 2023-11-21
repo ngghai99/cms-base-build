@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :articles
     resources :users
     resources :clients
+    resources :article_categories
   end
 
   namespace :api do
