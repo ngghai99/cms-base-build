@@ -79,11 +79,11 @@
 <% end %>
 
 <script type="text/javascript">
-  document.addEventListener('DOMContentLoaded', function() {
-    var articleImages = document.getElementById('user_create_form_image') || document.getElementById('client_image')
+  document.addEventListener('turbo:load', function() {
+    var articleImages = document.getElementById('user_create_form_image') || document.getElementById('client_image');
     var thumbnailImg = document.getElementById('thumbnail-img');
-    console.log(articleImages)
-    console.log(thumbnailImg)
+    console.log(articleImages);
+    console.log(thumbnailImg);
     handlePreview(articleImages, thumbnailImg);
   });
 
