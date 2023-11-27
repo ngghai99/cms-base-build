@@ -46,7 +46,7 @@ export default function Nav() {
               <li className="nav-item">
                 {" "}
                 <a className="nav-link" href="http://localhost:3000">
-                  About Me
+                  ABOUT ME
                 </a>
               </li>
               <li className="nav-item dropdown">
@@ -59,25 +59,25 @@ export default function Nav() {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  Articles
+                  ARTICLES
                 </a>
                 <div className="dropdown-menu">
                   {" "}
                   <a className="dropdown-item" href="travel.html">
-                    Travel
+                    TRAVEL
                   </a>
                   <a className="dropdown-item" href="travel.html">
-                    Lifestyle
+                    LIFESTYLE
                   </a>
                   <a className="dropdown-item" href="travel.html">
-                    Cruises
+                    CRUISES
                   </a>
                 </div>
               </li>
               <li className="nav-item">
                 {" "}
                 <a className="nav-link" href="contact.html">
-                  Contact
+                  CONTACT
                 </a>
               </li>
             </ul>

@@ -4,12 +4,18 @@
  * FACEBOOK: https://www.facebook.com/themefisher
  * GITHUB: https://github.com/themefisher/
  */
+ @font-face {
+  font-family: 'Sono SemiBold';
+  src: url('/fonts/Sono-SemiBold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
 
 /*  typography */
 body {
   line-height: 1.6;
-  font-family: "Work Sans", sans-serif;
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Montserrat', sans-serif;
+  /* -webkit-font-smoothing: antialiased; */
   font-size: 16px;
   color: #333;
 }
@@ -24,7 +30,7 @@ p {
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   color: #131313;
-  font-family: "Neuton", serif;
+  font-family: 'Sono', sans-serif;
   font-weight: 700;
   line-height: 1.3;
 }
@@ -91,23 +97,23 @@ h6, .h6 {
 }
 
 .btn-primary {
-  background: #13AE6F;
+  background: #22b9d0;
   color: #fff;
-  border-color: #13AE6F;
+  border-color: #22b9d0;
 }
 .btn-primary:hover, .btn-primary:active, .btn-primary.active .btn-primary:focus, .btn-primary.focus {
-  background: #13AE6F !important;
-  border-color: #13AE6F !important;
+  background: #22b9d0 !important;
+  border-color: #22b9d0 !important;
 }
 
 .btn-outline-primary {
   background: transparent;
-  color: #13AE6F;
-  border-color: #13AE6F;
+  color: #22b9d0;
+  border-color: #22b9d0;
 }
 .btn-outline-primary:hover, .btn-outline-primary:active, .btn-outline-primary.active .btn-outline-primary:focus, .btn-outline-primary.focus {
-  background: #13AE6F !important;
-  border-color: #13AE6F !important;
+  background: #22b9d0 !important;
+  border-color: #22b9d0 !important;
   color: #fff;
 }
 
@@ -122,12 +128,12 @@ body {
 }
 
 ::-moz-selection {
-  background: #13AE6F;
+  background: #22b9d0;
   color: #fff;
 }
 
 ::selection {
-  background: #13AE6F;
+  background: #22b9d0;
   color: #fff;
 }
 
@@ -171,7 +177,7 @@ select:focus {
 }
 
 a:hover {
-  color: #13AE6F;
+  color: #22b9d0;
 }
 
 .slick-slide {
@@ -187,6 +193,7 @@ a:hover {
   position: relative;
   z-index: 1;
   margin-bottom: 15px;
+  color: #348CD2
 }
 .section-title::before {
   position: absolute;
@@ -196,6 +203,13 @@ a:hover {
   left: 0;
   top: 0;
   z-index: -1;
+}
+
+.section-banner {
+  background-image: url('/images/wave-banner.jpg'), linear-gradient(#348CD2, #FFFFFF);
+  background-repeat: no-repeat;
+  background-size: 100% 23%;
+  background-position: top;
 }
 
 .bg-cover {
@@ -209,7 +223,7 @@ a:hover {
 }
 
 .border-primary {
-  border-color: #13AE6F !important;
+  border-color: #22b9d0 !important;
 }
 
 .font-primary {
@@ -235,7 +249,7 @@ a:hover {
   font-weight: 600;
 }
 .breadcrumb-item a {
-  color: #13AE6F;
+  color: #22b9d0;
 }
 
 /* overlay */
@@ -254,11 +268,11 @@ a:hover {
 }
 
 .bg-primary {
-  background: #13AE6F !important;
+  background: #22b9d0 !important;
 }
 
 .text-primary {
-  color: #13AE6F !important;
+  color: #22b9d0 !important;
 }
 
 .text-default {
@@ -296,7 +310,6 @@ a:hover {
   background-color: transparent;
 }
 .navigation .navbar {
-  border-bottom: 1px solid #ececec;
   padding: 25px 0;
 }
 @media (max-width: 767px) {
@@ -338,6 +351,7 @@ a:hover {
 .navigation .nav-item .nav-link {
   font-size: 16px;
   font-weight: 500;
+  color: #fff;
   font-family: "Work Sans", sans-serif;
   text-transform: capitalize;
   line-height: 1;
@@ -349,6 +363,7 @@ a:hover {
 .navigation .nav-item.dropdown .nav-link {
   position: relative;
   padding-right: 38px !important;
+  color: #fff;
 }
 @media (max-width: 991px) {
   .navigation .nav-item.dropdown .nav-link {
@@ -445,11 +460,13 @@ a:hover {
 }
 .navigation .navbar-light .navbar-nav .nav-link {
   color: #19234C;
-  font-weight: 500;
+  font-weight: 600;
   padding: 15px 20px;
+  color: #fff;
+  font-size: 14px;
 }
 .navigation .navbar-light .navbar-nav .nav-link:hover {
-  color: #000;
+  color: #fff;
 }
 @media (max-width: 991px) {
   .navigation .navbar-nav {
@@ -479,7 +496,7 @@ a:hover {
   width: 100%;
   border: none;
   padding: 11px 40px 11px 15px;
-  border-radius: 0;
+  border-radius: 20px;
   background-size: 15px;
   background-position: calc(100% - 15px) center;
   border: 1px solid #ddd;
@@ -525,6 +542,9 @@ a:hover {
   position: relative;
   border-radius: 10px;
 }
+.card-border {
+  border: 1px solid #1fb4d2 !important;
+}
 .card-meta {
   padding-left: 0;
 }
@@ -540,7 +560,7 @@ a:hover {
   letter-spacing: 2px;
 }
 .card-meta li a:hover {
-  color: #13AE6F;
+  color: #22b9d0;
 }
 .card-footer {
   background-color: transparent;
@@ -590,21 +610,22 @@ a:hover {
 }
 
 .post-title {
-  color: #000;
+  color: #00CC99;
   display: inline;
   text-decoration: none;
-  background-image: linear-gradient(#3deaa4, #3deaa4);
+  /* background-image: linear-gradient(#3deaa4, #3deaa4); */
   background-position: 0% 80%;
   background-repeat: no-repeat;
   background-size: 0% 8px;
-  transition: background-size 0.3s;
+  /* transition: background-size 0.3s; */
+  font-family: 'Sono SemiBold';
 }
 .post-title-sm {
   background-size: 0% 3px;
 }
 
 a.post-title:hover {
-  color: #000;
+  color: #0e7ded;
   background-size: 100% 8px;
 }
 
@@ -632,16 +653,16 @@ a.post-title-sm:hover {
 }
 .pagination .page-item .page-link:focus, .pagination .page-item .page-link:hover {
   box-shadow: none;
-  background: #13AE6F;
+  background: #22b9d0;
   color: #fff;
 }
 .pagination .page-item:first-child .page-link, .pagination .page-item:last-child .page-link {
   border-radius: 0;
 }
 .pagination .page-item.active .page-link {
-  background: #13AE6F;
+  background: #22b9d0;
   color: #fff;
-  border-color: #13AE6F;
+  border-color: #22b9d0;
 }
 
 .post-meta {
@@ -772,7 +793,7 @@ a.post-title-sm:hover {
   border-radius: 100%;
   left: 0;
   top: 7px;
-  background-color: #13AE6F;
+  background-color: #22b9d0;
   transition: 0.3s ease;
 }
 .content table {
@@ -798,7 +819,7 @@ a.post-title-sm:hover {
   text-align: left !important;
 }
 .content blockquote {
-  border-left: 4px solid #13AE6F;
+  border-left: 4px solid #22b9d0;
   padding: 20px;
   margin: 20px 0;
 }
@@ -930,7 +951,7 @@ footer .section {
 }
 
 .navbar-footer .nav-link:hover {
-  color: #13AE6F;
+  color: #22b9d0;
   text-decoration: underline;
 }
 
@@ -959,4 +980,19 @@ footer .section {
   width: auto;
   height: auto;
   overflow: hidden;
+}
+
+.text-title-white {
+  font-size: 58px;
+  color: #fff;
+  font-family: 'Sono SemiBold';
+  font-weight: 700;
+}
+
+.img-fluid {
+  max-width: 165px !important;
+}
+
+.widget-title{
+  color: #348CD2;
 }

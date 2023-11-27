@@ -31,7 +31,9 @@ export default function LatestArticles() {
   return (
     <>
       <div className="col-12">
-        <h2 className="section-title">Latest Articles</h2>
+        <div className='text-center mb-5 pb-2'>
+          <h1 className="text-title-white">Latest Articles</h1>
+        </div>
       </div>
       <div className="col-lg-8 mb-5 mb-lg-0">
         <div className="row">
@@ -39,7 +41,7 @@ export default function LatestArticles() {
             articles?.map((article, index) =>
               index === 0 ? (
                 <div key={article.id} className="col-12 mb-4">
-                  <article className="card article-card">
+                  <article className="card card-border article-card">
                   <Link href={`/articles/${article.id}`}>
                       <div className="card-image">
                         <div className="post-info">
@@ -68,7 +70,7 @@ export default function LatestArticles() {
                 </div>
               ) : (
                 <div key={article.id} className="col-md-6 mb-4">
-                  <article className="card article-card article-card-sm h-100">
+                  <article className="card card-border article-card article-card-sm h-100">
                   <Link href={`/articles/${article.id}`}>
                     <div className="card-image">
                       <div className="post-info">
