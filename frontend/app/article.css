@@ -208,7 +208,7 @@ a:hover {
 .section-banner {
   background-image: url('/images/wave-banner.jpg'), linear-gradient(#348CD2, #FFFFFF);
   background-repeat: no-repeat;
-  background-size: 100% 23%;
+  background-size: 100% 610px;
   background-position: top;
 }
 
@@ -543,7 +543,7 @@ a:hover {
   border-radius: 10px;
 }
 .card-border {
-  border: 1px solid #1fb4d2 !important;
+  border: 2px solid #1fb4d2 !important;
 }
 .card-meta {
   padding-left: 0;
@@ -989,10 +989,22 @@ footer .section {
   font-weight: 700;
 }
 
+.text-title-article-detail {
+  font-size: 40px;
+  color: #fff;
+  font-family: 'Sono SemiBold';
+  font-weight: 700;
+  text-align: center;
+}
+
 .img-fluid {
   max-width: 165px !important;
 }
 
 .widget-title{
   color: #348CD2;
+}
+
+.article-content{
+  margin-top: 315px;
 }

@@ -38,21 +38,23 @@ export default function ArticleDetail({ ArticleId }: { ArticleId: number }) {
     fetchData();
   }, []);
 
-  console.log(article)
   return (
     <>
-      <div className="col-lg-8 mb-5 mb-lg-0">
-        {article && (
-            <>
-              <h1>{article.title}</h1>
-              <p>{formatDate(article.created_at)}</p>
-              <div
-                className="small-text-description"
-                dangerouslySetInnerHTML={{ __html: article.content }}
-              ></div>
-            </>
-          )}
-      </div>
+      {article && (
+        <>
+          <h2 className='text-title-article-detail'>{article.title}</h2><div className="row justify-content-center">
+            <div className="col-lg-10 col-12">
+              <div className='article-content'>
+                <p>{formatDate(article.created_at)}</p>
+                <div
+                  className="small-text-description"
+                  dangerouslySetInnerHTML={{ __html: article.content }}
+                ></div>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </>
   )
 }
