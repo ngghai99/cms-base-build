@@ -58,7 +58,7 @@ export default function ArticleDetail({ ArticleId }: { ArticleId: number }) {
                 </div>
                 <div className='col-lg-9 col-12'>
                   <p className='create-at-show'>
-                    <i className='bi-clock-fill custom-icon'></i>
+                    <i className='bi-clock-fill custom-icon mr-1'></i>
                     {formatDate(article.created_at)}
                   </p>
                   <div
