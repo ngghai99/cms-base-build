@@ -91,6 +91,10 @@ h6, .h6 {
   z-index: 1;
   transition: 0.2s ease;
 }
+
+.pl-0 {
+  padding-left: 0px !important;
+}
 .btn:hover, .btn:active, .btn.active .btn:focus, .btn.focus {
   outline: 0;
   box-shadow: none !important;
@@ -1050,4 +1054,12 @@ footer .section {
 
 .custom-icon {
   color: #00CC99;
+}
+
+.spacing-recommended {
+  margin-left: 30px;
+}
+
+.widget-title-color {
+  color: #000;
 }
