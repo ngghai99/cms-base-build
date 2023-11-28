@@ -32,7 +32,8 @@ export default function LatestArticles() {
     <>
       <div className="col-12">
         <div className='text-center mb-5 pb-2'>
-          <h1 className="text-title-white">Latest Articles</h1>
+          <h1 className="text-title-white">Learn Fullstack Web Development</h1>
+          <h2 className="text-title-white text-title-description">Latest Articles</h2>
         </div>
       </div>
       <div className="col-lg-8 mb-5 mb-lg-0">

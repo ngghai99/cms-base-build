@@ -993,6 +993,10 @@ footer .section {
   font-weight: 700;
 }
 
+.text-title-description {
+  font-size: 20px;
+}
+
 .text-title-article-detail {
   font-size: 40px;
   color: #fff;
