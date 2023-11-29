@@ -15,9 +15,9 @@ export default function WidgetBlocks() {
                   alt="About Me"
                   className="w-100 author-thumb-sm d-block"
                 />
-                <h2 className="widget-title my-3">Hai Nguyen</h2>
+                <h2 className="widget-title my-3">Rendi</h2>
                 <p className="mb-3 pb-2">
-                  Hello, I’m Hai Nguyen this is my project use Nextjs
+                  Hello, I’m Rendi this is my project use Nextjs
                   and Rails.
                 </p>{" "}
                 <a
