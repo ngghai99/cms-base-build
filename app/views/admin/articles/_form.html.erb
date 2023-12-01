@@ -44,18 +44,17 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-2"></div>
-            <div class="col-md-2">
+            <div class="col-md-4">
               <div class="mb-3" data-controller="image" id="Img">
                 <% if @article_form.present? %>
-                  <label>Select a background article:</label><br>
-                  <label id="image-label" class="image-hover" for="article_image">
+                  <label class="d-flex justify-content-center">Select a background article:</label><br>
+                  <label id="image-label" class="image-hover d-flex justify-content-center" for="article_image">
                     <%= image_tag "#{f.object.image_url.to_s.present? ? f.object.image_url.to_s : 'default.jpeg'}", id: "thumbnail-img", size: "200x200" %>
                   </label>
                   <%= f.file_field :image, class: "form-control display-none" %>
                 <% else %>
-                  <label>Select a background article:</label><br>
-                  <label id="image-label" class="image-hover" for="article_image">
+                  <label class="d-flex justify-content-center">Select a background article:</label><br>
+                  <label id="image-label" class="image-hover d-flex justify-content-center" for="article_image">
                     <%= image_tag "#{f.object.image_url.to_s.present? ? f.object.image_url.to_s : 'default.jpeg'}", id: "thumbnail-img", size: "200x200" %>
                   </label>
                   <%= f.file_field :image, class: "form-control display-none" %>
