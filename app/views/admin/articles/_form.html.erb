@@ -10,33 +10,33 @@
         <div class="tab-pane fade show active" id="tab_1">
           <%= render partial: 'shared/error_messages', locals: { object: @article_form } %>
           <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-8">
               <div class="row">
-                <div class="col-md-5">
+                <div class="col-md-6">
                   <div class="form-group">
                     <%= f.label :title %><br>
                     <%= f.text_field :title, class: "form-control" %>
                   </div>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-6">
                   <div class="form-group">
                     <%= f.label :slug %><br>
                     <%= f.text_field :slug, class: "form-control" %>
                   </div>
                 </div><br>
-                <div class="col-md-5">
+                <div class="col-md-6">
                   <div class="form-group">
                     <%= f.label :order %>
                     <%= f.number_field :order, class: "form-control" %>
                   </div>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-6">
                   <div class="form-group">
                     <%= f.label :status %><br>
                     <%= f.select :status, [[t('status.active'), 'active'], [t('status.disable'), 'disable']], {}, { class: "form-control" }   %>
                   </div>
                 </div>
-                <div class="col-md-10">
+                <div class="col-md-12">
                   <div class="form-group">
                     <%= f.label :mini_description %><br>
                     <%= f.text_field :mini_description, class: 'form-control' %>
@@ -44,6 +44,7 @@
                 </div>
               </div>
             </div>
+            <div class="col-md-2"></div>
             <div class="col-md-2">
               <div class="mb-3" data-controller="image" id="Img">
                 <% if @article_form.present? %>
